@@ -1,9 +1,7 @@
 
 echo "iniciando" > ~/log_geral.txt
 
-sudo apt-get update
 
-echo "update ok" >> ~/log_geral.txt
 
 
 # Make sure we have updated URLs to packages etc.
@@ -38,15 +36,30 @@ sudo apt-get install -y libdune-common-dev libdune-geometry-dev \
 
 
 
-
-
-
-
+echo "Começando os clones do OPM" >> ~/log_geral.txt
 
 git clone https://github.com/OPM/opm-common.git
 mkdir opm-common/build
-# cd opm-common/build
-# cmake .. 1> cmake.out 2> cmake.outerr
+
+
+git clone https://github.com/OPM/opm-material.git
+mkdir opm-material/build
+
+
+git clone https://github.com/OPM/opm-grid.git
+mkdir opm-grid/build
+
+
+git clone https://github.com/OPM/opm-models.git
+mkdir opm-models/build
+
+
+git clone https://github.com/OPM/opm-simulators.git
+mkdir opm-simulators/build
+
+
+git clone https://github.com/OPM/opm-upscaling.git
+mkdir opm-upscaling/build
 
 
 
