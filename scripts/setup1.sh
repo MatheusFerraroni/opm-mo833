@@ -1,5 +1,5 @@
 
-echo "iniciando" > ~/log_geral.txt
+echo "iniciando" > /home/ubuntu/log_geral.txt
 
 
 
@@ -36,38 +36,33 @@ sudo apt-get install -y libdune-common-dev libdune-geometry-dev \
 
 
 
-echo "Começando os clones do OPM" >> ~/log_geral.txt
+echo "Começando os clones do OPM" >> /home/ubuntu/log_geral.txt
 
 git clone https://github.com/OPM/opm-common.git
-mkdir opm-common/build
+mkdir /home/ubuntu/opm-common/build
 
 
 git clone https://github.com/OPM/opm-material.git
-mkdir opm-material/build
+mkdir /home/ubuntu/opm-material/build
 
 
 git clone https://github.com/OPM/opm-grid.git
-mkdir opm-grid/build
+mkdir /home/ubuntu/opm-grid/build
 
 
 git clone https://github.com/OPM/opm-models.git
-mkdir opm-models/build
+mkdir /home/ubuntu/opm-models/build
 
 
 git clone https://github.com/OPM/opm-simulators.git
-mkdir opm-simulators/build
+mkdir /home/ubuntu/opm-simulators/build
 
 
 git clone https://github.com/OPM/opm-upscaling.git
-mkdir opm-upscaling/build
+mkdir /home/ubuntu/opm-upscaling/build
 
 
 
 
-# fallocate -l 15G /swapfile
-# chmod 600 /swapfile
-# sudo mkswap /swapfile
-# sudo swapon /swapfile
 
-
-echo "all complete" >> ~/log_geral.txt
+echo "all complete" >> /home/ubuntu/log_geral.txt
