@@ -63,4 +63,11 @@ mkdir opm-upscaling/build
 
 
 
+
+fallocate -l 10G /swapfile
+chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
+
 echo "all complete" >> ~/log_geral.txt
