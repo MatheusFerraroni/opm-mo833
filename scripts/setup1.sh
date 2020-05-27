@@ -1,7 +1,6 @@
 
 echo "SETUP 1 STARTED" > /home/ubuntu/log_geral.txt
-date "+%H:%M:%S   %d/%m/%y" > /home/ubuntu/log_geral.txt
-
+date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
 
 
 
@@ -38,7 +37,6 @@ sudo apt-get install -y libdune-common-dev libdune-geometry-dev \
 
 
 echo "Começando os clones do OPM" >> /home/ubuntu/log_geral.txt
-date "+%H:%M:%S   %d/%m/%y" > /home/ubuntu/log_geral.txt
 
 git clone https://github.com/OPM/opm-common.git
 mkdir /home/ubuntu/opm-common/build
@@ -68,4 +66,4 @@ mkdir /home/ubuntu/opm-upscaling/build
 
 
 echo "SETUP 1 COMPLETE" >> /home/ubuntu/log_geral.txt
-date "+%H:%M:%S   %d/%m/%y" > /home/ubuntu/log_geral.txt
+date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
