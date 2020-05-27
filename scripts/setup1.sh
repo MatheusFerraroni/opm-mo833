@@ -64,6 +64,10 @@ mkdir /home/ubuntu/opm-upscaling/build
 
 
 
+fallocate -l 10G /swapfile
+chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
 
 
 echo "SETUP 1 COMPLETE" >> /home/ubuntu/log_geral.txt
