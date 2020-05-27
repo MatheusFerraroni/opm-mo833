@@ -48,3 +48,5 @@ make -j 2 1> make_res.out 2> make_res.outerr
 
 echo "COMPILERS COMPLETE" >> /home/ubuntu/log_geral.txt
 date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
+
+echo "ok" >> /home/ubuntu/SETUP2COMPLETE.txt
