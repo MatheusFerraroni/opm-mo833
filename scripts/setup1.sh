@@ -34,35 +34,37 @@ sudo apt-get install -y libblas-dev libboost-all-dev \
 sudo apt-get install -y libdune-common-dev libdune-geometry-dev \
   libdune-istl-dev libdune-grid-dev
 
+sudo apt-get install -y unzip
 
 
 echo "Começando os clones do OPM" >> /home/ubuntu/log_geral.txt
 date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
 
-git clone https://github.com/OPM/opm-common.git
+git clone https://github.com/MatheusFerraroni/opm-common.git
 mkdir /home/ubuntu/opm-common/build
 
 
-git clone https://github.com/OPM/opm-material.git
+git clone https://github.com/MatheusFerraroni/opm-material.git
 mkdir /home/ubuntu/opm-material/build
 
 
-git clone https://github.com/OPM/opm-grid.git
+git clone https://github.com/MatheusFerraroni/opm-grid.git
 mkdir /home/ubuntu/opm-grid/build
 
 
-git clone https://github.com/OPM/opm-models.git
+git clone https://github.com/MatheusFerraroni/opm-models.git
 mkdir /home/ubuntu/opm-models/build
 
 
-git clone https://github.com/OPM/opm-simulators.git
+git clone https://github.com/MatheusFerraroni/opm-simulators.git
 mkdir /home/ubuntu/opm-simulators/build
 
 
-git clone https://github.com/OPM/opm-upscaling.git
+git clone https://github.com/MatheusFerraroni/opm-upscaling.git
 mkdir /home/ubuntu/opm-upscaling/build
 
 
+git clone https://github.com/MatheusFerraroni/opm-data.git
 
 echo "SETUP 1 COMPLETE" >> /home/ubuntu/log_geral.txt
 date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt

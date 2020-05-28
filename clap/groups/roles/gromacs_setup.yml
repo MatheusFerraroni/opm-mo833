@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+  - name: Debug task....
+    debug:
+      msg: Gromacs setup action called! 
+  - name: Preparando maquina para rodar o gromacs_mpi
+    become: yes
+    shell: "wget https://raw.githubusercontent.com/MatheusFerraroni/gromacs-mo833a/ativi-7-exp-1/experiments/ativ-7-exp-1/script_setup.sh && sh script_setup.sh"
+  - name: Coloca 777 na pasta do gromacs
+    become: yes
+    shell: "chmod -R 777 gromacs-mo833a/"

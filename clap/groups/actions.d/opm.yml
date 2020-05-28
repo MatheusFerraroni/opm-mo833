@@ -1,0 +1,5 @@
+---
+actions:
+  setup:
+    playbook: roles/opm_setup.yml
+    description: Prepara o opm

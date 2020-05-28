@@ -1,0 +1,18 @@
+setups:
+  config-master-opm-1:
+    groups:
+    - name: opm
+    actions:
+    - type: command
+      command: touch master.txt
+
+
+clusters:
+  cluster-opm:
+    nodes:
+      node-master:
+        type: type-a
+        count: 1
+        min_count: 1
+        setups: 
+        - config-master-opm-1
