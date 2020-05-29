@@ -11,120 +11,130 @@
     become: yes
     shell: "chmod -R 777 opm-*/"
 
-  - name: CMAKE opm-common
-    shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
-    args:
-      chdir: /home/ubuntu/opm-common/build
-  - name: MAKE opm-common
-    shell: make -i -j 2 1> make_res.out 2> make_res.outerr
-    async: 18000
-    poll: 0
-    register: commonjob
-    args:
-      chdir: /home/ubuntu/opm-common/build
+  # - name: CMAKE opm-common
+  #   shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
+  #   args:
+  #     chdir: /home/ubuntu/opm-common/build
+  # - name: MAKE opm-common
+  #   shell: make -i -j 2 1> make_res.out 2> make_res.outerr
+  #   async: 18000
+  #   poll: 0
+  #   register: commonjob
+  #   args:
+  #     chdir: /home/ubuntu/opm-common/build
 
-  - name: 'ESPERANDO commonjob'
-    async_status:
-      jid: "{{ commonjob.ansible_job_id }}"
-    register: job_result
-    until: job_result.finished
-    retries: 30000
+  # - name: 'ESPERANDO commonjob'
+  #   async_status:
+  #     jid: "{{ commonjob.ansible_job_id }}"
+  #   register: job_result
+  #   until: job_result.finished
+  #   retries: 30000
 
-  - name: CMAKE opm-material
-    shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
-    args:
-      chdir: /home/ubuntu/opm-material/build
-  - name: MAKE opm-material
-    shell: make -j 2 1> make_res.out 2> make_res.outerr
-    async: 18000
-    poll: 0
-    register: materialjob
-    args:
-      chdir: /home/ubuntu/opm-material/build
+  # - name: CMAKE opm-material
+  #   shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
+  #   args:
+  #     chdir: /home/ubuntu/opm-material/build
+  # - name: MAKE opm-material
+  #   shell: make -j 2 1> make_res.out 2> make_res.outerr
+  #   async: 18000
+  #   poll: 0
+  #   register: materialjob
+  #   args:
+  #     chdir: /home/ubuntu/opm-material/build
 
-  - name: 'ESPERANDO materialjob'
-    async_status:
-      jid: "{{ materialjob.ansible_job_id }}"
-    register: job_result
-    until: job_result.finished
-    retries: 30000
+  # - name: 'ESPERANDO materialjob'
+  #   async_status:
+  #     jid: "{{ materialjob.ansible_job_id }}"
+  #   register: job_result
+  #   until: job_result.finished
+  #   retries: 30000
 
-  - name: CMAKE opm-grid
-    shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
-    args:
-      chdir: /home/ubuntu/opm-grid/build
-  - name: MAKE opm-grid
-    shell: make -j 2 1> make_res.out 2> make_res.outerr
-    async: 18000
-    poll: 0
-    register: gridjob
-    args:
-      chdir: /home/ubuntu/opm-grid/build
+  # - name: CMAKE opm-grid
+  #   shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
+  #   args:
+  #     chdir: /home/ubuntu/opm-grid/build
+  # - name: MAKE opm-grid
+  #   shell: make -j 2 1> make_res.out 2> make_res.outerr
+  #   async: 18000
+  #   poll: 0
+  #   register: gridjob
+  #   args:
+  #     chdir: /home/ubuntu/opm-grid/build
 
-  - name: 'ESPERANDO gridjob'
-    async_status:
-      jid: "{{ gridjob.ansible_job_id }}"
-    register: job_result
-    until: job_result.finished
-    retries: 30000
+  # - name: 'ESPERANDO gridjob'
+  #   async_status:
+  #     jid: "{{ gridjob.ansible_job_id }}"
+  #   register: job_result
+  #   until: job_result.finished
+  #   retries: 30000
 
-  - name: CMAKE opm-models
-    shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
-    args:
-      chdir: /home/ubuntu/opm-models/build
-  - name: MAKE opm-models
-    shell: make -j 2 1> make_res.out 2> make_res.outerr
-    async: 18000
-    poll: 0
-    register: modelsjob
-    args:
-      chdir: /home/ubuntu/opm-models/build
+  # - name: CMAKE opm-models
+  #   shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
+  #   args:
+  #     chdir: /home/ubuntu/opm-models/build
+  # - name: MAKE opm-models
+  #   shell: make -j 2 1> make_res.out 2> make_res.outerr
+  #   async: 18000
+  #   poll: 0
+  #   register: modelsjob
+  #   args:
+  #     chdir: /home/ubuntu/opm-models/build
 
-  - name: 'ESPERANDO modelsjob'
-    async_status:
-      jid: "{{ modelsjob.ansible_job_id }}"
-    register: job_result
-    until: job_result.finished
-    retries: 30000
+  # - name: 'ESPERANDO modelsjob'
+  #   async_status:
+  #     jid: "{{ modelsjob.ansible_job_id }}"
+  #   register: job_result
+  #   until: job_result.finished
+  #   retries: 30000
 
-  - name: CMAKE opm-simulators
-    shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
-    args:
-      chdir: /home/ubuntu/opm-simulators/build
-  - name: MAKE opm-simulators
-    shell: make 1> make_res.out 2> make_res.outerr
-    async: 18000
-    poll: 0
-    register: simulatorsjob
-    args:
-      chdir: /home/ubuntu/opm-simulators/build
+  # - name: CMAKE opm-simulators
+  #   shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
+  #   args:
+  #     chdir: /home/ubuntu/opm-simulators/build
+  # - name: MAKE opm-simulators
+  #   shell: make 1> make_res.out 2> make_res.outerr
+  #   async: 18000
+  #   poll: 0
+  #   register: simulatorsjob
+  #   args:
+  #     chdir: /home/ubuntu/opm-simulators/build
 
-  - name: 'ESPERANDO simulatorsjob'
-    async_status:
-      jid: "{{ simulatorsjob.ansible_job_id }}"
-    register: job_result
-    until: job_result.finished
-    retries: 30000
+  # - name: 'ESPERANDO simulatorsjob'
+  #   async_status:
+  #     jid: "{{ simulatorsjob.ansible_job_id }}"
+  #   register: job_result
+  #   until: job_result.finished
+  #   retries: 30000
 
-  - name: CMAKE opm-upscaling
-    shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
-    args:
-      chdir: /home/ubuntu/opm-upscaling/build
-  - name: MAKE opm-upscaling
-    shell: make -j 2 1> make_res.out 2> make_res.outerr
-    async: 18000
-    poll: 0
-    register: upscalingjob
-    args:
-      chdir: /home/ubuntu/opm-upscaling/build
+  # - name: CMAKE opm-upscaling
+  #   shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
+  #   args:
+  #     chdir: /home/ubuntu/opm-upscaling/build
+  # - name: MAKE opm-upscaling
+  #   shell: make -j 2 1> make_res.out 2> make_res.outerr
+  #   async: 18000
+  #   poll: 0
+  #   register: upscalingjob
+  #   args:
+  #     chdir: /home/ubuntu/opm-upscaling/build
 
-  - name: 'ESPERANDO upscaling'
-    async_status:
-      jid: "{{ upscalingjob.ansible_job_id }}"
-    register: job_result
-    until: job_result.finished
-    retries: 30000
+  # - name: 'ESPERANDO upscaling'
+  #   async_status:
+  #     jid: "{{ upscalingjob.ansible_job_id }}"
+  #   register: job_result
+  #   until: job_result.finished
+  #   retries: 30000
 
-  - name: Coloca 777 na pasta do opm-*
-    become: yes
-    shell: "chmod -R 777 opm-*/"
+  # - name: Coloca 777 na pasta do opm-*
+  #   become: yes
+  #   shell: "chmod -R 777 opm-*/"
+
+  
+
+
+# scp -r ubuntu@100.25.140.112:/home/ubuntu/opm-common/build /home/ubuntu/opm-common
+# scp -r ubuntu@100.25.140.112:/home/ubuntu/opm-material/build /home/ubuntu/opm-material
+# scp -r ubuntu@100.25.140.112:/home/ubuntu/opm-grid/build /home/ubuntu/opm-grid
+# scp -r ubuntu@100.25.140.112:/home/ubuntu/opm-models/build /home/ubuntu/opm-models
+# scp -r ubuntu@100.25.140.112:/home/ubuntu/opm-simulators/build /home/ubuntu/opm-simulators
+# scp -r ubuntu@100.25.140.112:/home/ubuntu/opm-upscaling/build /home/ubuntu/opm-upscaling

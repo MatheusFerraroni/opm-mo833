@@ -7,3 +7,7 @@ actions:
   run:
     playbook: roles/opm_run.yml
     description: Executa o NORNE
+
+  hosts:
+    playbook: roles/opm_hosts.yml
+    description: Configura os hosts para se comunicarem via ssh
