@@ -1,0 +1,44 @@
+---
+- hosts: all
+  tasks:
+
+
+
+  - name: Executando NORNE PERF
+    shell: perf report /home/ubuntu/opm-simulators/build/bin/flow NORNE_ATW2013.DATA
+    async: 18000
+    poll: 0
+    register: runningnorne
+    args:
+      chdir: /home/ubuntu/opm-data/norne
+
+  - name: 'Esperando runningnorne'
+    async_status:
+      jid: "{{ runningnorne.ansible_job_id }}"
+    register: job_result
+    until: job_result.finished
+    retries: 30000
+
+  - name: Executando NORNE VALGRIND
+    shell: valgrind --tool=callgrind /home/ubuntu/opm-simulators/build/bin/flow NORNE_ATW2013.DATA
+    async: 18000
+    poll: 0
+    register: runningnorne2
+    args:
+      chdir: /home/ubuntu/opm-data/norne
+
+  - name: 'Esperando runningnorne2'
+    async_status:
+      jid: "{{ runningnorne2.ansible_job_id }}"
+    register: job_result
+    until: job_result.finished
+    retries: 30000
+
+
+
+
+# cd /home/ubuntu/opm-data/spe10model1
+# /home/ubuntu/opm-simulators/build/bin/flow SPE10_MODEL1.DATA
+
+# cd /home/ubuntu/opm-data/spe9
+# /home/ubuntu/opm-simulators/build/bin/flow SPE9.DATA

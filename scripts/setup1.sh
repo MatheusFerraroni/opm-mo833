@@ -66,5 +66,19 @@ mkdir /home/ubuntu/opm-upscaling/build
 
 git clone https://github.com/MatheusFerraroni/opm-data.git
 
+
+echo "Pegando PERF" >> /home/ubuntu/log_geral.txt
+date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
+
+
+
+apt-get install -y linux-tools-$(uname -r) linux-tools-generic
+
+
+echo "Pegando VALGRIND" >> /home/ubuntu/log_geral.txt
+date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
+
+sudo apt-get install -y valgrind
+
 echo "SETUP 1 COMPLETE" >> /home/ubuntu/log_geral.txt
 date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt

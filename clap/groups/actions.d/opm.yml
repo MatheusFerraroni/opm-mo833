@@ -3,3 +3,7 @@ actions:
   setup:
     playbook: roles/opm_setup.yml
     description: Prepara o opm
+
+  run:
+    playbook: roles/opm_run.yml
+    description: Executa o NORNE

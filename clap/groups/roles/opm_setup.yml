@@ -10,15 +10,6 @@
   - name: Coloca 777 na pasta do opm-*
     become: yes
     shell: "chmod -R 777 opm-*/"
-  # - name: Baixando setup2
-  #   become: yes
-  #   shell: "wget https://raw.githubusercontent.com/MatheusFerraroni/opm-mo833/master/scripts/setup2.sh"
-  # - name: Executando OPM compilers
-  #   become: yes
-  #   async: 18000
-  #   poll: 60
-  #   shell: /home/ubuntu/setup2.sh
-
 
   - name: CMAKE opm-common
     shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
@@ -137,6 +128,3 @@
   - name: Coloca 777 na pasta do opm-*
     become: yes
     shell: "chmod -R 777 opm-*/"
-  # - name: Wait until the file /home/ubuntu/SETUP2COMPLETE.txt is present before continuing
-  #   wait_for:
-  #     path: /home/ubuntu/SETUP2COMPLETE.txt
