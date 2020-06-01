@@ -63,7 +63,7 @@ sudo chmod -R 777 /home/ubuntu/efs
 
 cd /home/ubuntu
 
-sudo mount -t efs fs-2e5fb0ad:/ /home/ubuntu/efs
+sudo mount -t efs fs-2e5fb0ad:/ /home/ubuntu/efs >> /home/ubuntu/log_geral.txt
 
 
 # sudo mount -t efs fs-2e5fb0ad:/ /home/ubuntu/efs
