@@ -108,7 +108,6 @@ echo "Pegando PERF" >> /home/ubuntu/log_geral.txt
 date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
 
 
-
 apt-get install -y linux-tools-$(uname -r) linux-tools-generic
 
 
