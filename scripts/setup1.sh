@@ -37,6 +37,24 @@ sudo apt-get install -y libdune-common-dev libdune-geometry-dev \
 sudo apt-get install -y unzip
 
 
+
+
+echo "PREPARANDO EFS" >> /home/ubuntu/log_geral.txt
+date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
+
+
+sudo sudo apt-get install -y nfs-common
+
+sudo mkdir efs
+
+sudo mount -t efs fs-2e5fb0ad:/ efs
+
+sudo mount -t efs -o tls fs-2e5fb0ad:/ efs
+
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-2e5fb0ad.efs.us-east-1.amazonaws.com:/ efs
+
+
+
 echo "Começando os clones do OPM" >> /home/ubuntu/log_geral.txt
 date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
 
