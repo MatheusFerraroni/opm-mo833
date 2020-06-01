@@ -45,8 +45,25 @@ date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
 
 sudo apt-get install -y nfs-common
 
+sudo apt-get update
+
+sudo apt-get install -y git binutils make
+
+git clone https://github.com/aws/efs-utils
+
+cd efs-utils
+
+make deb
+
+sudo apt-get install -y ./build/amazon-efs-utils*deb
 
 sudo mkdir /home/ubuntu/efs
+
+sudo chmod -R 777 /home/ubuntu/efs
+
+cd /home/ubuntu
+
+sudo mount -t efs fs-2e5fb0ad:/ /home/ubuntu/efs
 
 
 # sudo mount -t efs fs-2e5fb0ad:/ /home/ubuntu/efs
