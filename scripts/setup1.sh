@@ -92,7 +92,7 @@ git clone https://github.com/MatheusFerraroni/opm-models.git
 mkdir /home/ubuntu/opm-models/build
 
 
-git clone https://github.com/MatheusFerraroni/opm-simulators.git
+git clone -b trabalho https://github.com/MatheusFerraroni/opm-simulators.git
 mkdir /home/ubuntu/opm-simulators/build
 
 
