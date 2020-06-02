@@ -11,7 +11,7 @@ clusters:
   cluster-opm:
     nodes:
       node-master:
-        type: type-a
+        type: type-compiler
         count: 1
         min_count: 1
         setups: 
