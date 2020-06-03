@@ -116,5 +116,12 @@ date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
 
 sudo apt-get install -y valgrind
 
+echo "Extras" >> /home/ubuntu/log_geral.txt
+date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
+
+
+mkdir /home/ubuntu/resultados
+
+
 echo "SETUP 1 COMPLETE" >> /home/ubuntu/log_geral.txt
 date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
