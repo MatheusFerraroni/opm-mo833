@@ -8,7 +8,7 @@
     become: no
     synchronize:
       src: ~/.ssh/id_rsa.pub
-      dest: /home/matheus/Desktop/mo833/ativ7/teste/{{inventory_hostname}}-id_rsa.pub
+      dest: ~/experimental_results/sshs/{{inventory_hostname}}-id_rsa.pub
       mode: pull
       recursive: yes
   - name: faz pasta pros sshs
@@ -16,7 +16,7 @@
   - name: Fazendo upload ssh keys
     become: no
     synchronize:
-      src: /home/matheus/Desktop/mo833/ativ7/teste/
+      src: ~/experimental_results/sshs/
       dest: ~/sshs_amigas/
       recursive: yes
   - name: Pegando script setup2

@@ -8,7 +8,7 @@ setups:
 
 
 clusters:
-  cluster-opm:
+  cluster-opm-1:
     nodes:
       node-master:
         type: type-compiler
