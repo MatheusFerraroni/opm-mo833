@@ -1,0 +1,42 @@
+setups:
+  config-omp-t2small-2-master:
+    groups:
+    - name: opm
+    actions:
+    - type: command
+      command: touch master.txt
+
+
+  config-omp-t2small-2-worker:
+    groups:
+    - name: opm
+    actions:
+    - type: command
+      command: touch slave.txt
+
+  prepara-tudo:
+    actions:
+    - type: action
+      name: hosts
+      group: opm
+
+
+clusters:
+  cluster-opm-t2small-2:
+    nodes:
+      node-master:
+        type: type-processor-a
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-t2small-2-master
+      node-worker:
+        type: type-processor-a
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-t2small-2-worker
+
+
+    after_all:
+    - prepara-tudo

@@ -122,118 +122,122 @@
     retries: 30000
 
 
-  # - name: Checa se opm-simulators ja foi compilado
-  #   stat:
-  #     path: /home/ubuntu/efs/opm-simulators/build/bin
-  #   register: stat_result
-  # - name: CMAKE opm-simulators
-  #   shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
-  #   args:
-  #     chdir: /home/ubuntu/opm-simulators/build
-  #   when: not stat_result.stat.exists
-  # - name: MAKE opm-simulators
-  #   shell: make 1> make_res.out 2> make_res.outerr
-  #   async: 18000
-  #   poll: 0
-  #   register: simulatorsjob
-  #   args:
-  #     chdir: /home/ubuntu/opm-simulators/build
-  #   when: not stat_result.stat.exists
-  # - name: 'ESPERANDO simulatorsjob'
-  #   async_status:
-  #     jid: "{{ simulatorsjob.ansible_job_id }}"
-  #   register: job_result
-  #   until: job_result.finished
-  #   when: not stat_result.stat.exists
-  #   retries: 30000
+  - name: Checa se opm-simulators ja foi compilado
+    stat:
+      path: /home/ubuntu/efs/opm-simulators/build/bin
+    register: stat_result
+  - name: CMAKE opm-simulators
+    shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
+    args:
+      chdir: /home/ubuntu/opm-simulators/build
+    when: not stat_result.stat.exists
+  - name: MAKE opm-simulators
+    shell: make 1> make_res.out 2> make_res.outerr
+    async: 18000
+    poll: 0
+    register: simulatorsjob
+    args:
+      chdir: /home/ubuntu/opm-simulators/build
+    when: not stat_result.stat.exists
+  - name: 'ESPERANDO simulatorsjob'
+    async_status:
+      jid: "{{ simulatorsjob.ansible_job_id }}"
+    register: job_result
+    until: job_result.finished
+    when: not stat_result.stat.exists
+    retries: 30000
 
 
 
-  # - name: Checa se opm-upscaling ja foi compilado
-  #   stat:
-  #     path: /home/ubuntu/efs/opm-upscaling/build/bin
-  #   register: stat_result
-  # - name: CMAKE opm-upscaling
-  #   shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
-  #   args:
-  #     chdir: /home/ubuntu/opm-upscaling/build
-  #   when: not stat_result.stat.exists
-  # - name: MAKE opm-upscaling
-  #   shell: make -j 2 1> make_res.out 2> make_res.outerr
-  #   async: 18000
-  #   poll: 0
-  #   register: upscalingjob
-  #   args:
-  #     chdir: /home/ubuntu/opm-upscaling/build
-  #   when: not stat_result.stat.exists
-  # - name: 'ESPERANDO upscaling'
-  #   async_status:
-  #     jid: "{{ upscalingjob.ansible_job_id }}"
-  #   register: job_result
-  #   until: job_result.finished
-  #   when: not stat_result.stat.exists
-  #   retries: 30000
+  - name: Checa se opm-upscaling ja foi compilado
+    stat:
+      path: /home/ubuntu/efs/opm-upscaling/build/bin
+    register: stat_result
+  - name: CMAKE opm-upscaling
+    shell: cmake .. -DUSE_MPI=1 1> cmake.out 2> cmake.outerr
+    args:
+      chdir: /home/ubuntu/opm-upscaling/build
+    when: not stat_result.stat.exists
+  - name: MAKE opm-upscaling
+    shell: make -j 2 1> make_res.out 2> make_res.outerr
+    async: 18000
+    poll: 0
+    register: upscalingjob
+    args:
+      chdir: /home/ubuntu/opm-upscaling/build
+    when: not stat_result.stat.exists
+  - name: 'ESPERANDO upscaling'
+    async_status:
+      jid: "{{ upscalingjob.ansible_job_id }}"
+    register: job_result
+    until: job_result.finished
+    when: not stat_result.stat.exists
+    retries: 30000
 
-  # - name: Coloca 777 na pasta do opm-*
-  #   become: yes
-  #   shell: "chmod -R 777 /home/ubuntu/opm-*/"
+  - name: Coloca 777 na pasta do opm-*
+    become: yes
+    shell: "chmod -R 777 /home/ubuntu/opm-*/"
   
 
-  # - name: Checa se opm-common ja foi para o efs
-  #   stat:
-  #     path: /home/ubuntu/efs/opm-common
-  #   register: stat_result
-  # - name: Coloca opm-common no efs se necessario
-  #   become: yes
-  #   shell: "cp -r /home/ubuntu/opm-common /home/ubuntu/efs/opm-common"
-  #   when: not stat_result.stat.exists
+  - name: Checa se opm-common ja foi para o efs
+    stat:
+      path: /home/ubuntu/efs/opm-common
+    register: stat_result
+  - name: Coloca opm-common no efs se necessario
+    become: yes
+    shell: "cp -r /home/ubuntu/opm-common /home/ubuntu/efs/opm-common"
+    when: not stat_result.stat.exists
 
-  # - name: Checa se opm-material ja foi para o efs
-  #   stat:
-  #     path: /home/ubuntu/efs/opm-material
-  #   register: stat_result
-  # - name: Coloca opm-material no efs se necessario
-  #   become: yes
-  #   shell: "cp -r /home/ubuntu/opm-material /home/ubuntu/efs/opm-material"
-  #   when: not stat_result.stat.exists
+  - name: Checa se opm-material ja foi para o efs
+    stat:
+      path: /home/ubuntu/efs/opm-material
+    register: stat_result
+  - name: Coloca opm-material no efs se necessario
+    become: yes
+    shell: "cp -r /home/ubuntu/opm-material /home/ubuntu/efs/opm-material"
+    when: not stat_result.stat.exists
 
-  # - name: Checa se opm-grid ja foi para o efs
-  #   stat:
-  #     path: /home/ubuntu/efs/opm-grid
-  #   register: stat_result
-  # - name: Coloca opm-grid no efs se necessario
-  #   become: yes
-  #   shell: "cp -r /home/ubuntu/opm-grid /home/ubuntu/efs/opm-grid"
-  #   when: not stat_result.stat.exists
+  - name: Checa se opm-grid ja foi para o efs
+    stat:
+      path: /home/ubuntu/efs/opm-grid
+    register: stat_result
+  - name: Coloca opm-grid no efs se necessario
+    become: yes
+    shell: "cp -r /home/ubuntu/opm-grid /home/ubuntu/efs/opm-grid"
+    when: not stat_result.stat.exists
 
-  # - name: Checa se opm-models ja foi para o efs
-  #   stat:
-  #     path: /home/ubuntu/efs/opm-models
-  #   register: stat_result
-  # - name: Coloca opm-models no efs se necessario
-  #   become: yes
-  #   shell: "cp -r /home/ubuntu/opm-models /home/ubuntu/efs/opm-models"
-  #   when: not stat_result.stat.exists
+  - name: Checa se opm-models ja foi para o efs
+    stat:
+      path: /home/ubuntu/efs/opm-models
+    register: stat_result
+  - name: Coloca opm-models no efs se necessario
+    become: yes
+    shell: "cp -r /home/ubuntu/opm-models /home/ubuntu/efs/opm-models"
+    when: not stat_result.stat.exists
 
-  # - name: Checa se opm-simulators ja foi para o efs
-  #   stat:
-  #     path: /home/ubuntu/efs/opm-simulators
-  #   register: stat_result
-  # - name: Coloca opm-simulators no efs se necessario
-  #   become: yes
-  #   shell: "cp -r /home/ubuntu/opm-simulators /home/ubuntu/efs/opm-simulators"
-  #   when: not stat_result.stat.exists
+  - name: Checa se opm-simulators ja foi para o efs
+    stat:
+      path: /home/ubuntu/efs/opm-simulators
+    register: stat_result
+  - name: Coloca opm-simulators no efs se necessario
+    become: yes
+    shell: "cp -r /home/ubuntu/opm-simulators /home/ubuntu/efs/opm-simulators"
+    when: not stat_result.stat.exists
 
-  # - name: Checa se opm-upscaling ja foi para o efs
-  #   stat:
-  #     path: /home/ubuntu/efs/opm-upscaling
-  #   register: stat_result
-  # - name: Coloca opm-upscaling no efs se necessario
-  #   become: yes
-  #   shell: "cp -r /home/ubuntu/opm-upscaling /home/ubuntu/efs/opm-upscaling"
-  #   when: not stat_result.stat.exists
+  - name: Checa se opm-upscaling ja foi para o efs
+    stat:
+      path: /home/ubuntu/efs/opm-upscaling
+    register: stat_result
+  - name: Coloca opm-upscaling no efs se necessario
+    become: yes
+    shell: "cp -r /home/ubuntu/opm-upscaling /home/ubuntu/efs/opm-upscaling"
+    when: not stat_result.stat.exists
 
 
-  # - name: Coloca 777 na pasta do opm-* no EFS
-  #   become: yes
-  #   shell: "chmod -R 777 /home/ubuntu/efs/opm-*/"
+  - name: Coloca 777 na pasta do opm-* no EFS
+    become: yes
+    shell: "chmod -R 777 /home/ubuntu/efs/opm-*/"
+
+  - name: Coloca 777 na pasta resultados
+    become: yes
+    shell: "chmod -R 777 /home/ubuntu/resultados"

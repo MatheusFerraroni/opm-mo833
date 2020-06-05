@@ -3,22 +3,14 @@
   tasks:
 
   - name: Executando NORNE
-    shell: /home/ubuntu/opm-simulators/build/bin/flow --max-pi=5 NORNE_ATW2013.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
-    async: 18000
-    poll: 0
-    register: runningnorne
+    shell: mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} NORNE_ATW2013.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
     args:
       chdir: /home/ubuntu/opm-data/norne
-  - name: 'Esperando runningnorne'
-    async_status:
-      jid: "{{ runningnorne.ansible_job_id }}"
-    until: runningnorne.finished
-    retries: 30000
   - name: Pegando Norne Results
     become: no
     synchronize:
       src: /home/ubuntu/resultados/tempos.txt
-      dest: ~/experimental_results/NORNE/1/{{ ansible_date_time.date }} {{ ansible_date_time.time }}.txt
+      dest: ~/experimental_results/NORNE/{{tipo}}/{{ ansible_date_time.date }} {{ ansible_date_time.time }}.txt
       mode: pull
       recursive: yes
 

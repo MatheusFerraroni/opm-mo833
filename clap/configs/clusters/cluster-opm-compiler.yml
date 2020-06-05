@@ -1,5 +1,5 @@
 setups:
-  config-master-opm-1:
+  config-compiler:
     groups:
     - name: opm
     actions:
@@ -8,11 +8,11 @@ setups:
 
 
 clusters:
-  cluster-opm-1:
+  cluster-opm-compiler:
     nodes:
       node-master:
         type: type-compiler
         count: 1
         min_count: 1
         setups: 
-        - config-master-opm-1
+        - config-compiler

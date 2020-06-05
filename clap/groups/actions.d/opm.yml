@@ -7,6 +7,21 @@ actions:
   run:
     playbook: roles/opm_run.yml
     description: Executa o NORNE
+    vars:
+    - name: maxpi
+      description: Valor maximo para rodar as paramount iteration
+    - name: tipo
+      description: Tipo da configuracao do cluster
+
+
+  runmultiple:
+    playbook: roles/opm_runmultiple.yml
+    description: Executa o NORNE
+    vars:
+    - name: maxpi
+      description: Valor maximo para rodar as paramount iteration
+    - name: tipo
+      description: Tipo da configuracao do cluster
 
   hosts:
     playbook: roles/opm_hosts.yml

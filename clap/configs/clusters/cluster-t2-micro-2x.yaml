@@ -1,28 +1,28 @@
-setups:
-  config-master-1:
-    groups:
-    - name: gromacs
-    actions:
-    - type: command
-      command: touch master.txt
+# setups:
+#   config-master-1:
+#     groups:
+#     - name: gromacs
+#     actions:
+#     - type: command
+#       command: touch master.txt
 
 
-  config-slave-1:
-    groups:
-    - name: gromacs
-    actions:
-    - type: command
-      command: touch slave.txt
+#   config-slave-1:
+#     groups:
+#     - name: gromacs
+#     actions:
+#     - type: command
+#       command: touch slave.txt
 
 
-  prepara-tudo:
-    actions:
-    - type: action
-      name: configure-hosts
-      group: gromacs
-    - type: action
-      name: simulation-setup
-      group: gromacs
+#   prepara-tudo:
+#     actions:
+#     - type: action
+#       name: configure-hosts
+#       group: gromacs
+#     - type: action
+#       name: simulation-setup
+#       group: gromacs
 
 
 clusters:
