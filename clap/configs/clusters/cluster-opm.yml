@@ -1,0 +1,203 @@
+setups:
+  config-omp-master:
+    groups:
+    - name: opm
+    actions:
+    - type: command
+      command: touch master.txt
+
+
+  config-omp-worker:
+    groups:
+    - name: opm
+    actions:
+    - type: command
+      command: touch worker.txt
+
+  prepara-tudo:
+    actions:
+    - type: action
+      name: hosts
+      group: opm
+
+
+clusters:
+  cluster-opm-t2small1:
+    nodes:
+      node-master:
+        type: type-processor-a
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+    after_all:
+    - prepara-tudo
+  cluster-opm-t2small2:
+    nodes:
+      node-master:
+        type: type-processor-a
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-a
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-t2small4:
+    nodes:
+      node-master:
+        type: type-processor-a
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-a
+        count: 3
+        min_count: 3
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-t2small8:
+    nodes:
+      node-master:
+        type: type-processor-a
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-a
+        count: 7
+        min_count: 7
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+
+
+  cluster-opm-t3small1:
+    nodes:
+      node-master:
+        type: type-processor-b
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+    after_all:
+    - prepara-tudo
+  cluster-opm-t3small2:
+    nodes:
+      node-master:
+        type: type-processor-b
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-b
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-t3small4:
+    nodes:
+      node-master:
+        type: type-processor-b
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-b
+        count: 3
+        min_count: 3
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-t3small8:
+    nodes:
+      node-master:
+        type: type-processor-b
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-b
+        count: 7
+        min_count: 7
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+
+
+
+  cluster-opm-t3xlarge1:
+    nodes:
+      node-master:
+        type: type-processor-c
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+    after_all:
+    - prepara-tudo
+  cluster-opm-t3xlarge2:
+    nodes:
+      node-master:
+        type: type-processor-c
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-c
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-t3xlarge4:
+    nodes:
+      node-master:
+        type: type-processor-c
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-c
+        count: 3
+        min_count: 3
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-t3xlarge8:
+    nodes:
+      node-master:
+        type: type-processor-c
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-c
+        count: 7
+        min_count: 7
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo

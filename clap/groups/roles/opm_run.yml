@@ -2,6 +2,7 @@
 - hosts: all
   tasks:
 
+
   - name: Executando NORNE
     shell: mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} NORNE_ATW2013.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
     args:
@@ -14,56 +15,29 @@
       mode: pull
       recursive: yes
 
+  - name: Executando spe10model1
+    shell: mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} SPE10_MODEL1.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
+    args:
+      chdir: /home/ubuntu/opm-data/spe10model1
+  - name: Pegando spe10model1 Results
+    become: no
+    synchronize:
+      src: /home/ubuntu/resultados/tempos.txt
+      dest: ~/experimental_results/spe10model1/{{tipo}}/{{ ansible_date_time.date }} {{ ansible_date_time.time }}.txt
+      mode: pull
+      recursive: yes
+
+  - name: Executando spe9
+    shell: mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} SPE9.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
+    args:
+      chdir: /home/ubuntu/opm-data/spe9
+  - name: Pegando spe9 Results
+    become: no
+    synchronize:
+      src: /home/ubuntu/resultados/tempos.txt
+      dest: ~/experimental_results/spe9/{{tipo}}/{{ ansible_date_time.date }} {{ ansible_date_time.time }}.txt
+      mode: pull
+      recursive: yes
 
 
 
-
-  # - name: Executando spe10model1
-  #   shell: mpirun --hostfile /home/ubuntu/hosts /home/ubuntu/opm-simulators/build/bin/flow --max-pi=5 SPE10_MODEL1.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
-  #   async: 18000
-  #   poll: 0
-  #   register: runningspe10
-  #   args:
-  #     chdir: /home/ubuntu/opm-data/spe10model1
-  # - name: 'Esperando runningspe10'
-  #   async_status:
-  #     jid: "{{ runningspe10.ansible_job_id }}"
-  #   until: runningspe10.finished
-  #   retries: 30000
-  # - name: Pegando Norne Results
-  #   become: no
-  #   synchronize:
-  #     src: /home/ubuntu/resultados/tempos.txt
-  #     dest: ~/experimental_results/SPE10_MODEL1/1/{{ ansible_date_time.date }} {{ ansible_date_time.time }}.txt
-  #     mode: pull
-  #     recursive: yes
-
-
-
-
-  # - name: Executando spe9
-  #   shell: mpirun --hostfile /home/ubuntu/hosts /home/ubuntu/opm-simulators/build/bin/flow --max-pi=5 SPE9.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
-  #   async: 18000
-  #   poll: 0
-  #   register: runningspe9
-  #   args:
-  #     chdir: /home/ubuntu/opm-data/spe9
-  # - name: 'Esperando runningspe9'
-  #   async_status:
-  #     jid: "{{ runningspe9.ansible_job_id }}"
-  #   until: runningspe9.finished
-  #   retries: 30000
-  # - name: Pegando Norne Results
-  #   become: no
-  #   synchronize:
-  #     src: /home/ubuntu/resultados/tempos.txt
-  #     dest: ~/experimental_results/spe9/1/{{ ansible_date_time.date }} {{ ansible_date_time.time }}.txt
-  #     mode: pull
-  #     recursive: yes
-
-
-# cd /home/ubuntu/opm-data/spe10model1
-# /home/ubuntu/opm-simulators/build/bin/flow SPE10_MODEL1.DATA
-
-# cd /home/ubuntu/opm-data/spe9
-# /home/ubuntu/opm-simulators/build/bin/flow SPE9.DATA
