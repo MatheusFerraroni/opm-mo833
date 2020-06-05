@@ -1,0 +1,56 @@
+[MO833] t1_antes_paramount,1.043448
+[MO833] t1_antes_paramount,1.042466
+[MO833] t1_antes_paramount,1.042856
+[MO833] t1_antes_paramount,1.052917
+[MO833] Paramount Iteration,1,2.406981,3.449447
+[MO833] Paramount Iteration,1,2.406774,3.450222
+[MO833] Paramount Iteration,1,2.407095,3.449951
+[MO833] Paramount Iteration,1,2.400417,3.453334
+[MO833] Paramount Iteration,2,0.903891,4.354113
+[MO833] Paramount Iteration,2,0.904137,4.353584
+[MO833] Paramount Iteration,2,0.904163,4.354114
+[MO833] Paramount Iteration,2,0.904370,4.357704
+[MO833] Paramount Iteration,3,0.628594,4.982707
+[MO833] Paramount Iteration,3,0.628726,4.982310
+[MO833] Paramount Iteration,3,0.628726,4.982840
+[MO833] Paramount Iteration,3,0.629018,4.986722
+[MO833] Paramount Iteration,4,0.608645,5.591352
+[MO833] Paramount Iteration,4,0.608803,5.591113
+[MO833] Paramount Iteration,4,0.608873,5.591713
+[MO833] Paramount Iteration,4,0.608725,5.595447
+[MO833] Paramount Iteration,5,0.457087,6.048439
+[MO833] Paramount Iteration,5,0.457458,6.048571
+[MO833] Paramount Iteration,5,0.457438,6.049151
+[MO833] Paramount Iteration,5,0.457269,6.052716
+[MO833] Paramount Iteration,6,0.469853,6.518292
+[MO833] Paramount Iteration,6,0.469988,6.518559
+[MO833] Paramount Iteration,6,0.469954,6.519105
+[MO833] Paramount Iteration,6,0.470189,6.522905
+[MO833] Paramount Iteration,7,0.447014,6.965306
+[MO833] Paramount Iteration,7,0.447202,6.965761
+[MO833] Paramount Iteration,7,0.447274,6.966379
+[MO833] Paramount Iteration,7,0.446996,6.969901
+[MO833] Paramount Iteration,8,0.466849,7.432155
+[MO833] Paramount Iteration,8,0.466987,7.432748
+[MO833] Paramount Iteration,8,0.467064,7.433443
+[MO833] Paramount Iteration,8,0.467496,7.437397
+[MO833] Paramount Iteration,9,0.495936,7.928091
+[MO833] Paramount Iteration,9,0.495922,7.928670
+[MO833] Paramount Iteration,9,0.495930,7.929373
+[MO833] Paramount Iteration,9,0.495813,7.933210
+[MO833] Paramount Iteration,10,0.462506,8.391176
+[MO833] PI avg,0.734871,10
+[MO833] Paramount Iteration,10,0.462532,8.391905
+[MO833] PI avg,0.734905,10
+[MO833] Paramount Iteration,10,0.462865,8.390956
+[MO833] PI avg,0.734751,10
+[MO833] Paramount Iteration,10,0.462753,8.395963
+[MO833] PI avg,0.734305,10
+[MO833] Total time,8.396029
+[MO833] Beta,0.142517
+[MO833] Total time,8.396993
+[MO833] Beta,0.142596
+[MO833] Total time,8.398553
+[MO833] Beta,0.143047
+[MO833] Total time,8.401441
+[MO833] Beta,0.144135
