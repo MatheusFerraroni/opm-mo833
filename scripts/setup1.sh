@@ -39,31 +39,6 @@ sudo apt-get install -y unzip
 
 
 
-echo "PREPARANDO EFS" >> /home/ubuntu/log_geral.txt
-date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
-
-
-sudo apt-get install -y nfs-common
-
-sudo apt-get update
-
-sudo apt-get install -y git binutils make
-
-git clone https://github.com/aws/efs-utils
-
-cd efs-utils
-
-make deb
-
-sudo apt-get install -y ./build/amazon-efs-utils*deb
-
-sudo mkdir /home/ubuntu/efs
-
-sudo chmod -R 777 /home/ubuntu/efs
-
-cd /home/ubuntu
-
-
 
 echo "Começando os clones do OPM" >> /home/ubuntu/log_geral.txt
 date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
@@ -92,27 +67,6 @@ git clone https://github.com/MatheusFerraroni/opm-upscaling.git
 mkdir /home/ubuntu/opm-upscaling/build
 
 
-git clone https://github.com/MatheusFerraroni/opm-data.git
-
-
-echo "Pegando PERF" >> /home/ubuntu/log_geral.txt
-date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
-
-
-
-apt-get install -y linux-tools-$(uname -r) linux-tools-generic
-
-
-echo "Pegando VALGRIND" >> /home/ubuntu/log_geral.txt
-date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
-
-sudo apt-get install -y valgrind
-
-echo "Extras" >> /home/ubuntu/log_geral.txt
-date "+%H:%M:%S   %d/%m/%y" >> /home/ubuntu/log_geral.txt
-
-
-mkdir /home/ubuntu/resultados
 
 
 echo "SETUP 1 COMPLETE" >> /home/ubuntu/log_geral.txt
