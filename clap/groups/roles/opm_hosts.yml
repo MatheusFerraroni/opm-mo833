@@ -19,7 +19,7 @@
         src: ~/experimental_results/sshs/
         dest: ~/sshs_amigas/
         recursive: yes
-    - name: Pegando script setup2
+    - name: Pegando script prepare_sshkeys.sh
       become: no
       shell: "cd ~/sshs_amigas/ && wget https://raw.githubusercontent.com/MatheusFerraroni/opm-mo833/master/scripts/prepare_sshkeys.sh && sh prepare_sshkeys.sh"
     - name: Remove hosts file

@@ -1,0 +1,45 @@
+---
+- hosts: all
+  tasks:
+
+
+  - name: Cria pasta de resultados
+    become: yes
+    shell: "mkdir /home/ubuntu/resultados && chmod -R 777 /home/ubuntu/resultados"
+
+  - name: Download dos datasets
+    become: yes
+    shell: "git clone https://github.com/MatheusFerraroni/opm-data.git && chmod -R 777 /home/ubuntu/opm-data"
+
+
+
+
+  - name: preparando 1
+    become: yes
+    shell: "apt-get install -y software-properties-common"
+
+
+  - name: preparando 2
+    become: yes
+    shell: "add-apt-repository -y ppa:opm/ppa"
+
+
+  - name: preparando 3
+    become: yes
+    shell: "apt-get update -y"
+
+
+
+  - name: preparando 4
+    become: yes
+    shell: "apt-get install -y mpi-default-dev"
+
+
+  - name: preparando 9
+    become: yes
+    shell: "apt-get install -y libtrilinos-zoltan-dev"
+
+  - name: preparando 5
+    become: yes
+    shell: "apt-get install -y libdune-common-dev libdune-geometry-dev libdune-istl-dev libdune-grid-dev"
+

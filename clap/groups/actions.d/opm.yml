@@ -4,6 +4,7 @@ actions:
     playbook: roles/opm_setup.yml
     description: Prepara o opm
 
+
   run:
     playbook: roles/opm_run.yml
     description: Executa o NORNE
@@ -23,6 +24,16 @@ actions:
     - name: tipo
       description: Tipo da configuracao do cluster
 
+
   hosts:
     playbook: roles/opm_hosts.yml
     description: Configura os hosts para se comunicarem via ssh
+
+
+  compila:
+    playbook: roles/opm_compila.yml
+    description: Compila o OPM
+
+  preparerun:
+    playbook: roles/opm_preparerun.yml
+    description: Prepara para rodar opm

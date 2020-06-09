@@ -3,8 +3,9 @@ setups:
     groups:
     - name: opm
     actions:
-    - type: command
-      command: touch master.txt
+    - type: action
+      name: compila
+      group: opm
 
 
 clusters:

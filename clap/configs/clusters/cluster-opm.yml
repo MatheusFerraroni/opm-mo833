@@ -19,6 +19,22 @@ setups:
     - type: action
       name: hosts
       group: opm
+    - type: action
+      name: preparerun
+      group: opm
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 clusters:
@@ -82,6 +98,12 @@ clusters:
     - prepara-tudo
 
 
+
+
+
+
+
+
   cluster-opm-t3small1:
     nodes:
       node-master:
@@ -143,6 +165,10 @@ clusters:
 
 
 
+
+
+
+
   cluster-opm-t3xlarge1:
     nodes:
       node-master:
@@ -195,6 +221,71 @@ clusters:
         - config-omp-master
       node-worker:
         type: type-processor-c
+        count: 7
+        min_count: 7
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+
+
+
+
+
+
+
+  cluster-opm-c5xlarge1:
+    nodes:
+      node-master:
+        type: type-processor-d
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+    after_all:
+    - prepara-tudo
+  cluster-opm-c5xlarge2:
+    nodes:
+      node-master:
+        type: type-processor-d
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-d
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-c5xlarge4:
+    nodes:
+      node-master:
+        type: type-processor-d
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-d
+        count: 3
+        min_count: 3
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-c5xlarge8:
+    nodes:
+      node-master:
+        type: type-processor-d
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-d
         count: 7
         min_count: 7
         setups: 

@@ -1,7 +1,7 @@
-type-compiler: # 0,10 USD por hora
+type-compiler: # 0,252 USD por hora
     provider: aws-config-us-east-1
     login: login-ubuntu
-    flavor: m4.large
+    flavor: r5.2xlarge
     boot_disk_size: 40
     image_id: ami-085925f297f89fce1
     security_group: mpi_group
@@ -32,3 +32,13 @@ type-processor-c: # 0,1664 USD por hora
     boot_disk_size: 40
     image_id: ami-085925f297f89fce1
     security_group: mpi_group
+
+
+type-processor-d: # 0,17 USD por hora
+    provider: aws-config-us-east-1
+    login: login-ubuntu
+    flavor: c5.xlarge
+    boot_disk_size: 40
+    image_id: ami-085925f297f89fce1
+    security_group: mpi_group
+    placement_group: opm_cluster_placement_group
