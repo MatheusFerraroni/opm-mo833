@@ -1,6 +1,7 @@
 
-rm -R ~/experimental_results
+# rm -R ~/experimental_results
 mkdir ~/experimental_results
+mkdir ~/experimental_results/sshs
 mkdir ~/experimental_results/NORNE/
 mkdir ~/experimental_results/NORNE/t2small1/
 mkdir ~/experimental_results/NORNE/t2small2/
@@ -18,6 +19,10 @@ mkdir ~/experimental_results/NORNE/c5xlarge1/
 mkdir ~/experimental_results/NORNE/c5xlarge2/
 mkdir ~/experimental_results/NORNE/c5xlarge4/
 mkdir ~/experimental_results/NORNE/c5xlarge8/
+mkdir ~/experimental_results/NORNE/c6gxlarge1/
+mkdir ~/experimental_results/NORNE/c6gxlarge2/
+mkdir ~/experimental_results/NORNE/c6gxlarge4/
+mkdir ~/experimental_results/NORNE/c6gxlarge8/
 mkdir ~/experimental_results/spe10model1/
 mkdir ~/experimental_results/spe10model1/t2small1/
 mkdir ~/experimental_results/spe10model1/t2small2/
@@ -35,6 +40,10 @@ mkdir ~/experimental_results/spe10model1/c5xlarge1/
 mkdir ~/experimental_results/spe10model1/c5xlarge2/
 mkdir ~/experimental_results/spe10model1/c5xlarge4/
 mkdir ~/experimental_results/spe10model1/c5xlarge8/
+mkdir ~/experimental_results/spe10model1/c6gxlarge1/
+mkdir ~/experimental_results/spe10model1/c6gxlarge2/
+mkdir ~/experimental_results/spe10model1/c6gxlarge4/
+mkdir ~/experimental_results/spe10model1/c6gxlarge8/
 mkdir ~/experimental_results/spe9/
 mkdir ~/experimental_results/spe9/t2small1/
 mkdir ~/experimental_results/spe9/t2small2/
@@ -52,9 +61,11 @@ mkdir ~/experimental_results/spe9/c5xlarge1/
 mkdir ~/experimental_results/spe9/c5xlarge2/
 mkdir ~/experimental_results/spe9/c5xlarge4/
 mkdir ~/experimental_results/spe9/c5xlarge8/
+mkdir ~/experimental_results/spe9/c6gxlarge1/
+mkdir ~/experimental_results/spe9/c6gxlarge2/
+mkdir ~/experimental_results/spe9/c6gxlarge4/
+mkdir ~/experimental_results/spe9/c6gxlarge8/
 
 
 
 chmod -R 777 ~/experimental_results/
-
-mkdir ~/experimental_results/sshs

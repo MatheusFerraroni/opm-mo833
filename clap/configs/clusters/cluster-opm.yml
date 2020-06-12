@@ -292,3 +292,74 @@ clusters:
         - config-omp-worker
     after_all:
     - prepara-tudo
+
+
+
+
+
+
+
+
+
+
+
+
+
+  cluster-opm-a1xlarge1:
+    nodes:
+      node-master:
+        type: type-processor-e
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+    after_all:
+    - prepara-tudo
+  cluster-opm-a1xlarge2:
+    nodes:
+      node-master:
+        type: type-processor-e
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-e
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-a1xlarge4:
+    nodes:
+      node-master:
+        type: type-processor-e
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-e
+        count: 3
+        min_count: 3
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo
+  cluster-opm-a1xlarge8:
+    nodes:
+      node-master:
+        type: type-processor-e
+        count: 1
+        min_count: 1
+        setups: 
+        - config-omp-master
+      node-worker:
+        type: type-processor-e
+        count: 7
+        min_count: 7
+        setups: 
+        - config-omp-worker
+    after_all:
+    - prepara-tudo

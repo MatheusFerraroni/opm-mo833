@@ -3,10 +3,16 @@
   tasks:
 
 
+
+
   - name: Executando NORNE
-    shell: mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} NORNE_ATW2013.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
+    shell: /usr/bin/time -p -o /home/ubuntu/resultados/tempos_real.txt mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} NORNE_ATW2013.DATA | grep -e MO833 > /home/ubuntu/resultados/tempos.txt
     args:
       chdir: /home/ubuntu/opm-data/norne
+  - name: Preparando tempos
+    shell: cat tempos_real.txt | grep real | sed 's/ /,/g' >> tempos.txt && rm tempos_real.txt
+    args:
+      chdir: /home/ubuntu/resultados/
   - name: Pegando Norne Results
     become: no
     synchronize:
@@ -16,9 +22,13 @@
       recursive: yes
 
   - name: Executando spe10model1
-    shell: mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} SPE10_MODEL1.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
+    shell: /usr/bin/time -p -o /home/ubuntu/resultados/tempos_real.txt mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} SPE10_MODEL1.DATA | grep -e MO833 > /home/ubuntu/resultados/tempos.txt
     args:
       chdir: /home/ubuntu/opm-data/spe10model1
+  - name: Preparando tempos
+    shell: cat tempos_real.txt | grep real | sed 's/ /,/g' >> tempos.txt && rm tempos_real.txt
+    args:
+      chdir: /home/ubuntu/resultados/
   - name: Pegando spe10model1 Results
     become: no
     synchronize:
@@ -28,9 +38,13 @@
       recursive: yes
 
   - name: Executando spe9
-    shell: mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} SPE9.DATA | grep MO833 > /home/ubuntu/resultados/tempos.txt
+    shell: /usr/bin/time -p -o /home/ubuntu/resultados/tempos_real.txt mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} SPE9.DATA | grep -e MO833 > /home/ubuntu/resultados/tempos.txt
     args:
       chdir: /home/ubuntu/opm-data/spe9
+  - name: Preparando tempos
+    shell: cat tempos_real.txt | grep real | sed 's/ /,/g' >> tempos.txt && rm tempos_real.txt
+    args:
+      chdir: /home/ubuntu/resultados/
   - name: Pegando spe9 Results
     become: no
     synchronize:
@@ -38,6 +52,8 @@
       dest: ~/experimental_results/spe9/{{tipo}}/{{ ansible_date_time.date }} {{ ansible_date_time.time }}.txt
       mode: pull
       recursive: yes
+
+
 
 
 

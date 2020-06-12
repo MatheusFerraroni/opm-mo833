@@ -35,11 +35,11 @@
     shell: "apt-get install -y mpi-default-dev"
 
 
-  - name: preparando 9
+  - name: preparando 5
     become: yes
     shell: "apt-get install -y libtrilinos-zoltan-dev"
 
-  - name: preparando 5
+  - name: preparando 6
     become: yes
     shell: "apt-get install -y libdune-common-dev libdune-geometry-dev libdune-istl-dev libdune-grid-dev"
 
