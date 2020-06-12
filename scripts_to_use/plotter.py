@@ -1,5 +1,7 @@
 import os
 from glob import glob
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 path = "/home/matheus/experimental_results (copy)/"
@@ -30,15 +32,87 @@ clusters = [
 "c5xlarge4",
 "c5xlarge8",
 
-"c6gxlarge1",
-"c6gxlarge2",
-"c6gxlarge4",
-"c6gxlarge8",
+# "c6gxlarge1",
+# "c6gxlarge2",
+# "c6gxlarge4",
+# "c6gxlarge8",
 ]
+
+
+
+
+def csv_gen(testcase, cfg, infos):
+    header = "test-case,cfg,date,total_time-time,total_time-main,beta,avg-PIs,n-PIs,1st-PI,2nd-PI,avg(2-6),avg(2-11)"
+
+    texto = header+"\n"
+    for info in infos:
+        texto += testcase+","
+        texto += cfg+","
+        texto += str(info["data_res"])+","
+        texto += str(info["total_time_time"])+","
+        texto += str(info["total_time_main"])+","
+        texto += str(info["beta"])+","
+        texto += str(info["avg_PIs"])+","
+        texto += str(info["n_PIs"])+","
+        texto += str(info["1st_PI"])+","
+        texto += str(info["2nd_PI"])+","
+        texto += str(info["avg2_6"])+","
+        texto += str(info["avg2_11"])
+        texto += "\n"
+
+    f = open(path+testcase+"/"+cfg+"/result.csv","w")
+    f.write(texto)
+    f.close()
+
+
+def chart_gen(testcase, infos):
+
+    fig = plt.figure(figsize=(20,10))
+    for c in clusters:
+
+        if len(infos[c])==0: continue
+
+        total_x = infos[c][0]["n_PIs"]
+
+        data_y = []
+
+        stds = []
+        for i in range(total_x):
+            med = 0
+
+            vals = []
+            for j in range(len(infos[c])):
+                med += infos[c][j]["pi_array_tempos"][i]
+                vals.append(infos[c][j]["pi_array_tempos"][i])
+
+            stds.append(np.std(vals))
+            med /= len(infos[c])
+            data_y.append(med)
+
+
+
+        data_x = np.arange(1,total_x+1)
+        yerr = np.linspace(0,0, total_x)
+
+        plt.errorbar(data_x, data_y, yerr=stds, label=c)
+
+
+
+    # upperlimits = [True, False] * 5
+    # lowerlimits = [False, True] * 5
+    # plt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,
+    #              label='subsets of uplims and lolims')
+
+    # plt.legend(loc='lower right')
+    plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left',
+           ncol=8, mode="expand", borderaxespad=0.,shadow=True, fancybox=True)
+    plt.show()
 
 
 def get_dados(arquivo):
     # print("Lendo arquivo: ",arquivo)
+
+    data_res = arquivo.split("/")[-1].split(".")[0]
     f = open(arquivo,"r")
     infos = f.read().split("\n")
     f.close()
@@ -57,6 +131,7 @@ def get_dados(arquivo):
     avg2_6 = 0
     avg2_11 = 0
 
+    pi_array_tempos = []
     for i in range(len(infos)):
         line = infos[i].split(",")
         line[0] = line[0].replace("[MO833] ","")
@@ -86,6 +161,7 @@ def get_dados(arquivo):
 
                 pi_numer = int(line[2])
                 pi_tempo = float(line[3])
+                pi_array_tempos.append(pi_tempo)
                 if pi_numer>=2 and pi_numer<=6:
                     avg2_6 += pi_tempo
                     avg2_11 += pi_tempo
@@ -114,6 +190,7 @@ def get_dados(arquivo):
         avg2_11 = avg2_11/10
 
     ret = {}
+    ret["data_res"] = data_res
     ret["inicialization_time"] = inicialization_time
     ret["total_time_time"] = total_time_time
     ret["total_time_main"] = total_time_main
@@ -124,6 +201,7 @@ def get_dados(arquivo):
     ret["2nd_PI"] = nd_PI
     ret["avg2_6"] = avg2_6
     ret["avg2_11"] = avg2_11
+    ret["pi_array_tempos"] = pi_array_tempos
     return ret
 
 
@@ -138,23 +216,12 @@ for d in datasets:
             resultados_encontrados[d][c][i] = get_dados(resultados_encontrados[d][c][i])
 
 
-    break
+
+        csv_gen(d,c,resultados_encontrados[d][c])
+    chart_gen(d,resultados_encontrados[d])
+
+    # break
 
 
 
 
-
-def csv():
-    header = "test-case,cfg,date,total_time-time,total_time-main,beta,avg-PIs,n-PIs,1st-PI,2nd-PI,avg(2-6),avg(2-11)"
-    # (a) test-case: nome do diretório que identifica o caso de teste (test-case em 6-b);
-    # (b) cfg: nome do diretório que identifica a configuração do cluster (cfg em 6-b);
-    # (c) date: nome do diretório que identifica a data do experimento (date em 6-b);
-    # (d) total_time-time: tempo total de execução medido com a ferramenta time (Wallclock time - real);
-    # (e) total_time-main: tempo total de execução medido com a instrumentação da função main (Item 5-a)
-    # (f) beta: valor de beta;
-    # (g) avg-PIs: Tempo médio de todas as iterações paramount;
-    # (h) n-PIs: Número de paramount iterations;
-    # (i) 1st-PI: Tempo da primeira paramount iteration;
-    # (j) 2nd-PI: Tempo da segunda paramount iteration;
-    # (k) avg(2-6): Tempo médio das iterações 2 até 6. Zero caso a aplicação execute menos do que 6 iterações;
-    # (l) avg(2-11): Tempo médio das iterações 2 até 11. Zero caso a aplicação execute menos do que 11 iterações;
