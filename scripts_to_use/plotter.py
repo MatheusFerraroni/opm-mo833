@@ -98,12 +98,10 @@ def chart_gen(testcase, infos):
 
 
 
-    # upperlimits = [True, False] * 5
-    # lowerlimits = [False, True] * 5
-    # plt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,
-    #              label='subsets of uplims and lolims')
 
-    # plt.legend(loc='lower right')
+    plt.title(testcase)
+    plt.xlabel("# Paramount Iteration")
+    plt.ylabel("Tempo (s)")
     plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left',
            ncol=8, mode="expand", borderaxespad=0.,shadow=True, fancybox=True)
     plt.show()

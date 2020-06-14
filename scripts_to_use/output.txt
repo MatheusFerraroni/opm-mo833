@@ -1,5 +1,5 @@
 # Criando maquinas
-Starting instances: {'type-processor-c': 1}...
+Starting instances: {'type-processor-a': 8}...
 [1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
 [1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
 [1;35mthe implicit localhost does not match 'all'[0m
@@ -19,12 +19,19 @@ PLAY RECAP *********************************************************************
 PLAY [localhost] ***************************************************************
 
 TASK [Tag EC2 instances] *******************************************************
-[0;33mchanged: [localhost] => (item={'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-31', 'id': 'i-031f00fcbc9c486b9'})[0m
+[0;33mchanged: [localhost] => (item={'id': 'i-0092e8e5788c143b0', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-190'})[0m
+[0;33mchanged: [localhost] => (item={'id': 'i-00c7264cff7c114fb', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-191'})[0m
+[0;33mchanged: [localhost] => (item={'id': 'i-013981b92f2444ea1', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-192'})[0m
+[0;33mchanged: [localhost] => (item={'id': 'i-0313ee787ff05b039', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-193'})[0m
+[0;33mchanged: [localhost] => (item={'id': 'i-0464d8b96629c271c', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-194'})[0m
+[0;33mchanged: [localhost] => (item={'id': 'i-085c91f2eb38361e3', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-195'})[0m
+[0;33mchanged: [localhost] => (item={'id': 'i-0d1dd8acb6c80842b', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-196'})[0m
+[0;33mchanged: [localhost] => (item={'id': 'i-0e16fc0cf28bd5745', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-197'})[0m
 
 PLAY RECAP *********************************************************************
 [0;33mlocalhost[0m                  : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-Checking if nodes `node-31` are alive (retry: 1/10)
+Checking if nodes `node-190, node-191, node-192, node-193, node-194, node-195, node-196, node-197` are alive (retry: 1/10)
 [1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
 [1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
 [1;35mthe implicit localhost does not match 'all'[0m
@@ -41,13 +48,27 @@ PLAY RECAP *********************************************************************
 PLAY [all] *********************************************************************
 
 TASK [Test SSH Connection] *****************************************************
-[1;31mfatal: [node-31]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 34.239.171.53 port 22: Connection timed out", "unreachable": true}[0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-197][0m
+[1;31mfatal: [node-196]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 34.207.253.250 port 22: Connection timed out", "unreachable": true}[0m
 
 PLAY RECAP *********************************************************************
-[0;31mnode-31[0m                    : ok=0    changed=0    [1;31munreachable=1   [0m failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-190[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-191[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-192[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-193[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-194[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-195[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;31mnode-196[0m                   : ok=0    changed=0    [1;31munreachable=1   [0m failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-197[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 Some nodes are not acessible by SSH yet... We will retry again after 15 seconds. Please wait...
-Checking if nodes `node-31` are alive (retry: 2/10)
+Checking if nodes `node-190, node-191, node-192, node-193, node-194, node-195, node-196, node-197` are alive (retry: 2/10)
 [1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
 [1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
 [1;35mthe implicit localhost does not match 'all'[0m
@@ -64,173 +85,471 @@ PLAY RECAP *********************************************************************
 PLAY [all] *********************************************************************
 
 TASK [Test SSH Connection] *****************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-196][0m
+[0;33mnode-190[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-191[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-192[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-193[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-194[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-195[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-196[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-197[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
 
 PLAY RECAP *********************************************************************
-[0;33mnode-31[0m                    : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-190[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-191[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-192[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-193[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-194[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-195[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-196[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-197[0m                   : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 
 PLAY [all] *********************************************************************
 
 TASK [Gathering Facts] *********************************************************
-[0;32mok: [node-31][0m
+[0;32mok: [node-191][0m
+[0;32mok: [node-193][0m
+[0;32mok: [node-194][0m
+[0;32mok: [node-195][0m
+[0;32mok: [node-192][0m
+[0;32mok: [node-190][0m
+[0;32mok: [node-196][0m
 
 TASK [Instalando dependencias do EFS] ******************************************
+[1;35m[WARNING]: Consider using the get_url or uri module rather than running 'wget'.[0m
+[1;35mIf you need to use command because get_url or uri is insufficient you can add[0m
+[1;35m'warn: false' to this command task or set 'command_warnings=False' in[0m
 [1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [MONTA EFS] ***************************************************************
 [1;35m[WARNING]: Consider using the mount module rather than running 'mount'.  If you[0m
 [1;35mneed to use command because mount is insufficient you can add 'warn: false' to[0m
 [1;35mthis command task or set 'command_warnings=False' in ansible.cfg to get rid of[0m
 [1;35mthis message.[0m
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
+[0;33mnode-190[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-191[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-192[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-193[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-194[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-195[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-196[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
 
 PLAY RECAP *********************************************************************
-[0;33mnode-31[0m                    : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-190[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-191[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-192[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-193[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-194[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-195[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-196[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-Executing in node `node-31` the command (via SSH): `touch master.txt`
----------------------------------------- STD OUTPUT of `node-31` ----------------------------------------
+Executing in node `node-190` the command (via SSH): `touch worker.txt`
+---------------------------------------- STD OUTPUT of `node-190` ----------------------------------------
 
----------------------------------------- ERR OUTPUT of `node-31` ----------------------------------------
+---------------------------------------- ERR OUTPUT of `node-190` ----------------------------------------
+
+--------------------------------------------------------------------------------
+Executing in node `node-191` the command (via SSH): `touch worker.txt`
+---------------------------------------- STD OUTPUT of `node-191` ----------------------------------------
+
+---------------------------------------- ERR OUTPUT of `node-191` ----------------------------------------
+
+--------------------------------------------------------------------------------
+Executing in node `node-192` the command (via SSH): `touch worker.txt`
+---------------------------------------- STD OUTPUT of `node-192` ----------------------------------------
+
+---------------------------------------- ERR OUTPUT of `node-192` ----------------------------------------
+
+--------------------------------------------------------------------------------
+Executing in node `node-193` the command (via SSH): `touch worker.txt`
+---------------------------------------- STD OUTPUT of `node-193` ----------------------------------------
+
+---------------------------------------- ERR OUTPUT of `node-193` ----------------------------------------
+
+--------------------------------------------------------------------------------
+Executing in node `node-194` the command (via SSH): `touch worker.txt`
+---------------------------------------- STD OUTPUT of `node-194` ----------------------------------------
+
+---------------------------------------- ERR OUTPUT of `node-194` ----------------------------------------
+
+--------------------------------------------------------------------------------
+Executing in node `node-195` the command (via SSH): `touch worker.txt`
+---------------------------------------- STD OUTPUT of `node-195` ----------------------------------------
+
+---------------------------------------- ERR OUTPUT of `node-195` ----------------------------------------
+
+--------------------------------------------------------------------------------
+Executing in node `node-196` the command (via SSH): `touch worker.txt`
+---------------------------------------- STD OUTPUT of `node-196` ----------------------------------------
+
+---------------------------------------- ERR OUTPUT of `node-196` ----------------------------------------
+
+--------------------------------------------------------------------------------
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+[0;32mok: [node-197][0m
+
+TASK [Instalando dependencias do EFS] ******************************************
+[1;35mansible.cfg to get rid of this message.[0m
+[0;33mchanged: [node-197][0m
+
+TASK [MONTA EFS] ***************************************************************
+[1;35mthis message.[0m
+[0;33mchanged: [node-197][0m
+
+PLAY RECAP *********************************************************************
+[0;33mnode-197[0m                   : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+Executing in node `node-197` the command (via SSH): `touch master.txt`
+---------------------------------------- STD OUTPUT of `node-197` ----------------------------------------
+
+---------------------------------------- ERR OUTPUT of `node-197` ----------------------------------------
 
 --------------------------------------------------------------------------------
 
 PLAY [all] *********************************************************************
 
 TASK [Gera ssh] ****************************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [Pegar arquivo ssh do host] ***********************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [faz pasta pros sshs] *****************************************************
-[1;35m[WARNING]: Consider using the file module with state=directory rather than[0m[1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-31][0m
+[1;35m[WARNING]: Consider using the file module with state=directory rather than[0m
+[1;35mrunning 'mkdir'.  If you need to use command because file is insufficient you[0m
+[1;35mcan add 'warn: false' to this command task or set 'command_warnings=False' in[0m
+[1;35mansible.cfg to get rid of this message.[0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [Fazendo upload ssh keys] *************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [Pegando script prepare_sshkeys.sh] ***************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-196][0m
+[0;33mchanged: [node-190][0m
 
 TASK [Remove hosts file] *******************************************************
-[0;32mok: [node-31][0m
+[0;32mok: [node-193][0m
+[0;32mok: [node-191][0m
+[0;32mok: [node-192][0m
+[0;32mok: [node-195][0m
+[0;32mok: [node-194][0m
+[0;32mok: [node-197][0m
+[0;32mok: [node-190][0m
+[0;32mok: [node-196][0m
 
 TASK [Create hosts file] *******************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [shell] *******************************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [Add Ansible inventory mappings to /home/ubuntu/hosts] ********************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [Remove ips file] *********************************************************
-[0;32mok: [node-31][0m
+[0;32mok: [node-192][0m
+[0;32mok: [node-193][0m
+[0;32mok: [node-191][0m
+[0;32mok: [node-194][0m
+[0;32mok: [node-195][0m
+[0;32mok: [node-197][0m
+[0;32mok: [node-190][0m
+[0;32mok: [node-196][0m
 
 TASK [Create ips file] *********************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [Add Ansible inventory mappings to ~/ips.sh] ******************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [Executa ips.sh] **********************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
+[0;33mnode-190[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-191[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-192[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-193[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-194[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-195[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-196[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-197[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
 
 PLAY RECAP *********************************************************************
-[0;33mnode-31[0m                    : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-190[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-191[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-192[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-193[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-194[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-195[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-196[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-197[0m                   : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 
 PLAY [all] *********************************************************************
 
 TASK [Gathering Facts] *********************************************************
-[0;32mok: [node-31][0m
+[0;32mok: [node-191][0m
+[0;32mok: [node-194][0m
+[0;32mok: [node-195][0m
+[0;32mok: [node-193][0m
+[0;32mok: [node-192][0m
+[0;32mok: [node-197][0m
+[0;32mok: [node-190][0m
+[0;32mok: [node-196][0m
 
 TASK [Cria pasta de resultados] ************************************************
-[1;35m[WARNING]: Consider using the file module with state=directory rather than[0m[1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-31][0m
+[1;35m[WARNING]: Consider using the file module with state=directory rather than[0m
+[1;35mrunning 'mkdir'.  If you need to use command because file is insufficient you[0m
+[1;35mcan add 'warn: false' to this command task or set 'command_warnings=False' in[0m
+[1;35mansible.cfg to get rid of this message.[0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [Download dos datasets] ***************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-196][0m
+[0;33mchanged: [node-190][0m
 
 TASK [preparando 1] ************************************************************
 [1;35m[WARNING]: Consider using the apt module rather than running 'apt-get'.  If you[0m
 [1;35mneed to use command because apt is insufficient you can add 'warn: false' to[0m
 [1;35mthis command task or set 'command_warnings=False' in ansible.cfg to get rid of[0m
 [1;35mthis message.[0m
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-196][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
 
 TASK [preparando 2] ************************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-196][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
 
 TASK [preparando 3] ************************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [preparando 4] ************************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-196][0m
+[0;33mchanged: [node-190][0m
 
 TASK [preparando 5] ************************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mchanged: [node-196][0m
 
 TASK [preparando 6] ************************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-192][0m
+[0;33mchanged: [node-194][0m
+[0;33mchanged: [node-193][0m
+[0;33mchanged: [node-195][0m
+[0;33mchanged: [node-191][0m
+[0;33mchanged: [node-196][0m
+[0;33mchanged: [node-197][0m
+[0;33mchanged: [node-190][0m
+[0;33mnode-190[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-191[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-192[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-193[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-194[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-195[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-196[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-197[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
 
 PLAY RECAP *********************************************************************
-[0;33mnode-31[0m                    : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-190[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-191[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-192[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-193[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-194[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-195[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-196[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-197[0m                   : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-Created cluster with id `cluster-8`. The cluster have 1 node(s)
-*  Node(id=`node-31`, type=`type-processor-c`, status=`reachable`, public_ip=`34.239.171.53`, groups=`opm`, tags=`clusters=cluster-8; cluster_node_type=cluster-8:node-master`, last_update=`12-06-20 18:26:07`
-Cluster `cluster-8` was sucessfully setup.
-# Cluster criado: cluster-8
-# Master id: node-31
+Created cluster with id `cluster-51`. The cluster have 8 node(s)
+*  Node(id=`node-192`, type=`type-processor-a`, status=`reachable`, public_ip=`54.84.158.8`, groups=`opm`, tags=`clusters=cluster-51; cluster_node_type=cluster-51:node-worker`, last_update=`14-06-20 01:44:51`
+*  Node(id=`node-193`, type=`type-processor-a`, status=`reachable`, public_ip=`100.25.35.144`, groups=`opm`, tags=`clusters=cluster-51; cluster_node_type=cluster-51:node-worker`, last_update=`14-06-20 01:44:51`
+*  Node(id=`node-191`, type=`type-processor-a`, status=`reachable`, public_ip=`54.208.154.123`, groups=`opm`, tags=`clusters=cluster-51; cluster_node_type=cluster-51:node-worker`, last_update=`14-06-20 01:44:51`
+*  Node(id=`node-195`, type=`type-processor-a`, status=`reachable`, public_ip=`54.152.54.51`, groups=`opm`, tags=`clusters=cluster-51; cluster_node_type=cluster-51:node-worker`, last_update=`14-06-20 01:44:51`
+*  Node(id=`node-197`, type=`type-processor-a`, status=`reachable`, public_ip=`52.3.249.235`, groups=`opm`, tags=`clusters=cluster-51; cluster_node_type=cluster-51:node-master`, last_update=`14-06-20 01:44:51`
+*  Node(id=`node-194`, type=`type-processor-a`, status=`reachable`, public_ip=`54.144.146.105`, groups=`opm`, tags=`clusters=cluster-51; cluster_node_type=cluster-51:node-worker`, last_update=`14-06-20 01:44:51`
+*  Node(id=`node-196`, type=`type-processor-a`, status=`reachable`, public_ip=`34.207.253.250`, groups=`opm`, tags=`clusters=cluster-51; cluster_node_type=cluster-51:node-worker`, last_update=`14-06-20 01:44:51`
+*  Node(id=`node-190`, type=`type-processor-a`, status=`reachable`, public_ip=`100.26.170.96`, groups=`opm`, tags=`clusters=cluster-51; cluster_node_type=cluster-51:node-worker`, last_update=`14-06-20 01:44:51`
+Cluster `cluster-51` was sucessfully setup.
+# Cluster criado: cluster-51
+# Master id: node-197
 # Executando Datasets
 
 PLAY [all] *********************************************************************
 
 TASK [Gathering Facts] *********************************************************
-[0;35m[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host node-31 should use [0m
+[0;35m[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host node-197 should use [0m
 [0;35m/usr/bin/python3, but is using /usr/bin/python for backward compatibility with [0m
 [0;35mprior Ansible releases. A future Ansible release will default to using the [0m
 [0;35mdiscovered platform python for this host. See https://docs.ansible.com/ansible/[0m
 [0;35m2.9/reference_appendices/interpreter_discovery.html for more information. This [0m
 [0;35mfeature will be removed in version 2.12. Deprecation warnings can be disabled [0m
 [0;35mby setting deprecation_warnings=False in ansible.cfg.[0m
-[0;32mok: [node-31][0m
+[0;32mok: [node-197][0m
 
 TASK [Executando NORNE] ********************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-197][0m
 
 TASK [Preparando tempos] *******************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-197][0m
 
 TASK [Pegando Norne Results] ***************************************************
-[0;33mchanged: [node-31][0m
-
-TASK [Executando spe10model1] **************************************************
-[0;33mchanged: [node-31][0m
-
-TASK [Preparando tempos] *******************************************************
-[0;33mchanged: [node-31][0m
-
-TASK [Pegando spe10model1 Results] *********************************************
-[0;33mchanged: [node-31][0m
-
-TASK [Executando spe9] *********************************************************
-[0;33mchanged: [node-31][0m
-
-TASK [Preparando tempos] *******************************************************
-[0;33mchanged: [node-31][0m
-
-TASK [Pegando spe9 Results] ****************************************************
-[0;33mchanged: [node-31][0m
+[0;33mchanged: [node-197][0m
 
 PLAY RECAP *********************************************************************
-[0;33mnode-31[0m                    : [0;32mok=10  [0m [0;33mchanged=9   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[0;33mnode-197[0m                   : [0;32mok=4   [0m [0;33mchanged=3   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-Nodes `node-31` from cluster `cluster-8` successfully perfored action `run`
+Nodes `node-197` from cluster `cluster-51` successfully perfored action `run`
 # Desligando cluster
-Stopping nodes: `node-31`...
+Stopping nodes: `node-190, node-191, node-192, node-193, node-194, node-195, node-196, node-197`...
 [1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
 [1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
 [1;35mthe implicit localhost does not match 'all'[0m
@@ -243,522 +562,5 @@ TASK [Stop instances] **********************************************************
 PLAY RECAP *********************************************************************
 [0;33mlocalhost[0m                  : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-Cluster `cluster-8` stopped!
+Cluster `cluster-51` stopped!
 # Cluster desligado
-# Criando maquinas
-Starting instances: {'type-processor-d': 1}...
-[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
-[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
-[1;35mthe implicit localhost does not match 'all'[0m
-
-PLAY [localhost] ***************************************************************
-
-TASK [Start instances (timeout 600 seconds)] ***********************************
-[0;33mchanged: [localhost][0m
-
-PLAY RECAP *********************************************************************
-[0;33mlocalhost[0m                  : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
-[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
-[1;35mthe implicit localhost does not match 'all'[0m
-
-PLAY [localhost] ***************************************************************
-
-TASK [Tag EC2 instances] *******************************************************
-[0;33mchanged: [localhost] => (item={'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-32', 'id': 'i-007eb3623b64572b3'})[0m
-
-PLAY RECAP *********************************************************************
-[0;33mlocalhost[0m                  : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-Checking if nodes `node-32` are alive (retry: 1/10)
-[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
-[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
-[1;35mthe implicit localhost does not match 'all'[0m
-
-PLAY [localhost] ***************************************************************
-
-TASK [Check AWS instance status] ***********************************************
-[0;32mok: [localhost][0m
-
-PLAY RECAP *********************************************************************
-[0;32mlocalhost[0m                  : [0;32mok=1   [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-
-PLAY [all] *********************************************************************
-
-TASK [Test SSH Connection] *****************************************************
-[1;31mfatal: [node-32]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 3.236.56.57 port 22: Connection timed out", "unreachable": true}[0m
-[0;31mnode-32[0m                    : ok=0    changed=0    [1;31munreachable=1   [0m failed=0    skipped=0    rescued=0    ignored=0   
-
-
-PLAY RECAP *********************************************************************
-[0;31mnode-32[0m                    : ok=0    changed=0    [1;31munreachable=1   [0m failed=0    skipped=0    rescued=0    ignored=0   
-
-Some nodes are not acessible by SSH yet... We will retry again after 15 seconds. Please wait...
-Checking if nodes `node-32` are alive (retry: 2/10)
-[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
-[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
-[1;35mthe implicit localhost does not match 'all'[0m
-
-PLAY [localhost] ***************************************************************
-
-TASK [Check AWS instance status] ***********************************************
-[0;32mok: [localhost][0m
-
-PLAY RECAP *********************************************************************
-[0;32mlocalhost[0m                  : [0;32mok=1   [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-
-PLAY [all] *********************************************************************
-
-TASK [Test SSH Connection] *****************************************************
-[0;33mchanged: [node-32][0m
-
-PLAY RECAP *********************************************************************
-[0;33mnode-32[0m                    : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-
-PLAY [all] *********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-[0;32mok: [node-32][0m
-
-TASK [Instalando dependencias do EFS] ******************************************
-[1;35m[WARNING]: Consider using the get_url or uri module rather than running 'wget'.[0m
-[1;35mIf you need to use command because get_url or uri is insufficient you can add[0m
-[1;35m'warn: false' to this command task or set 'command_warnings=False' in[0m
-[1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-32][0m
-
-TASK [MONTA EFS] ***************************************************************
-[1;35m[WARNING]: Consider using the mount module rather than running 'mount'.  If you[0m
-[1;35mneed to use command because mount is insufficient you can add 'warn: false' to[0m
-[1;35mthis command task or set 'command_warnings=False' in ansible.cfg to get rid of[0m
-[1;35mthis message.[0m
-[0;33mchanged: [node-32][0m
-
-PLAY RECAP *********************************************************************
-[0;33mnode-32[0m                    : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-Executing in node `node-32` the command (via SSH): `touch master.txt`
----------------------------------------- STD OUTPUT of `node-32` ----------------------------------------
-
----------------------------------------- ERR OUTPUT of `node-32` ----------------------------------------
-
---------------------------------------------------------------------------------
-
-PLAY [all] *********************************************************************
-
-TASK [Gera ssh] ****************************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Pegar arquivo ssh do host] ***********************************************
-[0;33mchanged: [node-32][0m
-
-TASK [faz pasta pros sshs] *****************************************************
-[1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-32][0m
-
-TASK [Fazendo upload ssh keys] *************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Pegando script prepare_sshkeys.sh] ***************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Remove hosts file] *******************************************************
-[0;32mok: [node-32][0m
-
-TASK [Create hosts file] *******************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [shell] *******************************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Add Ansible inventory mappings to /home/ubuntu/hosts] ********************
-[0;33mchanged: [node-32][0m
-
-TASK [Remove ips file] *********************************************************
-[0;32mok: [node-32][0m
-
-TASK [Create ips file] *********************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Add Ansible inventory mappings to ~/ips.sh] ******************************
-[0;33mchanged: [node-32][0m
-
-TASK [Executa ips.sh] **********************************************************
-[0;33mchanged: [node-32][0m
-
-PLAY RECAP *********************************************************************
-[0;33mnode-32[0m                    : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-
-PLAY [all] *********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-[0;32mok: [node-32][0m
-
-TASK [Cria pasta de resultados] ************************************************
-[1;35m[WARNING]: Consider using the file module with state=directory rather than[0m
-[1;35mrunning 'mkdir'.  If you need to use command because file is insufficient you[0m
-[1;35mcan add 'warn: false' to this command task or set 'command_warnings=False' in[0m
-[1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-32][0m
-
-TASK [Download dos datasets] ***************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [preparando 1] ************************************************************
-[1;35m[WARNING]: Consider using the apt module rather than running 'apt-get'.  If you[0m
-[1;35mneed to use command because apt is insufficient you can add 'warn: false' to[0m
-[1;35mthis command task or set 'command_warnings=False' in ansible.cfg to get rid of[0m
-[1;35mthis message.[0m
-[0;33mchanged: [node-32][0m
-
-TASK [preparando 2] ************************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [preparando 3] ************************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [preparando 4] ************************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [preparando 5] ************************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [preparando 6] ************************************************************
-[0;33mchanged: [node-32][0m
-
-PLAY RECAP *********************************************************************
-[0;33mnode-32[0m                    : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-Created cluster with id `cluster-9`. The cluster have 1 node(s)
-*  Node(id=`node-32`, type=`type-processor-d`, status=`reachable`, public_ip=`3.236.56.57`, groups=`opm`, tags=`clusters=cluster-9; cluster_node_type=cluster-9:node-master`, last_update=`12-06-20 18:39:40`
-Cluster `cluster-9` was sucessfully setup.
-# Cluster criado: cluster-9
-# Master id: node-32
-# Executando Datasets
-
-PLAY [all] *********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-[0;35m[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host node-32 should use [0m
-[0;35m/usr/bin/python3, but is using /usr/bin/python for backward compatibility with [0m
-[0;35mprior Ansible releases. A future Ansible release will default to using the [0m
-[0;35mdiscovered platform python for this host. See https://docs.ansible.com/ansible/[0m
-[0;35m2.9/reference_appendices/interpreter_discovery.html for more information. This [0m
-[0;35mfeature will be removed in version 2.12. Deprecation warnings can be disabled [0m
-[0;35mby setting deprecation_warnings=False in ansible.cfg.[0m
-[0;32mok: [node-32][0m
-
-TASK [Executando NORNE] ********************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Preparando tempos] *******************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Pegando Norne Results] ***************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Executando spe10model1] **************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Preparando tempos] *******************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Pegando spe10model1 Results] *********************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Executando spe9] *********************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Preparando tempos] *******************************************************
-[0;33mchanged: [node-32][0m
-
-TASK [Pegando spe9 Results] ****************************************************
-[0;33mchanged: [node-32][0m
-
-PLAY RECAP *********************************************************************
-[0;33mnode-32[0m                    : [0;32mok=10  [0m [0;33mchanged=9   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-Nodes `node-32` from cluster `cluster-9` successfully perfored action `run`
-# Desligando cluster
-Stopping nodes: `node-32`...
-[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
-[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
-[1;35mthe implicit localhost does not match 'all'[0m
-
-PLAY [localhost] ***************************************************************
-
-TASK [Stop instances] **********************************************************
-[0;33mchanged: [localhost][0m
-
-PLAY RECAP *********************************************************************
-[0;33mlocalhost[0m                  : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-Cluster `cluster-9` stopped!
-# Cluster desligado
-# Criando maquinas
-Starting instances: {'type-processor-c': 2}...
-[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
-[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
-[1;35mthe implicit localhost does not match 'all'[0m
-
-PLAY [localhost] ***************************************************************
-
-TASK [Start instances (timeout 600 seconds)] ***********************************
-[0;33mchanged: [localhost][0m
-
-PLAY RECAP *********************************************************************
-[0;33mlocalhost[0m                  : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
-[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
-[1;35mthe implicit localhost does not match 'all'[0m
-
-PLAY [localhost] ***************************************************************
-
-TASK [Tag EC2 instances] *******************************************************
-[0;33mchanged: [localhost] => (item={'id': 'i-080b73703a4addf88', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-33'})[0m
-[0;33mchanged: [localhost] => (item={'id': 'i-0cfc3ecc065bf81cc', 'name': 'ansible-login-ubuntu-aws-config-us-east-1-node-34'})[0m
-
-PLAY RECAP *********************************************************************
-[0;33mlocalhost[0m                  : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-Checking if nodes `node-33, node-34` are alive (retry: 1/10)
-[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
-[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
-[1;35mthe implicit localhost does not match 'all'[0m
-
-PLAY [localhost] ***************************************************************
-
-TASK [Check AWS instance status] ***********************************************
-[0;32mok: [localhost][0m
-
-PLAY RECAP *********************************************************************
-[0;32mlocalhost[0m                  : [0;32mok=1   [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-
-PLAY [all] *********************************************************************
-
-TASK [Test SSH Connection] *****************************************************
-[1;31mfatal: [node-33]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 3.234.217.99 port 22: Connection refused", "unreachable": true}[0m
-[1;31mfatal: [node-34]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 35.175.103.191 port 22: Connection timed out", "unreachable": true}[0m
-
-PLAY RECAP *********************************************************************
-[0;31mnode-33[0m                    : ok=0    changed=0    [1;31munreachable=1   [0m failed=0    skipped=0    rescued=0    ignored=0   
-[0;31mnode-34[0m                    : ok=0    changed=0    [1;31munreachable=1   [0m failed=0    skipped=0    rescued=0    ignored=0   
-
-Some nodes are not acessible by SSH yet... We will retry again after 15 seconds. Please wait...
-Checking if nodes `node-33, node-34` are alive (retry: 2/10)
-[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
-[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
-[1;35mthe implicit localhost does not match 'all'[0m
-
-PLAY [localhost] ***************************************************************
-
-TASK [Check AWS instance status] ***********************************************
-[0;32mok: [localhost][0m
-
-PLAY RECAP *********************************************************************
-[0;32mlocalhost[0m                  : [0;32mok=1   [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-
-PLAY [all] *********************************************************************
-
-TASK [Test SSH Connection] *****************************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-PLAY RECAP *********************************************************************
-
-PLAY RECAP *********************************************************************
-[0;33mnode-33[0m                    : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-[0;33mnode-34[0m                    : [0;32mok=1   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-
-PLAY [all] *********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-[0;32mok: [node-34][0m
-
-TASK [Instalando dependencias do EFS] ******************************************
-[1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-34][0m
-
-TASK [MONTA EFS] ***************************************************************
-[1;35m[WARNING]: Consider using the mount module rather than running 'mount'.  If you[0m[1;35mthis message.[0m
-[0;33mchanged: [node-34][0m
-
-PLAY RECAP *********************************************************************
-[0;33mnode-34[0m                    : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-Executing in node `node-34` the command (via SSH): `touch master.txt`
----------------------------------------- STD OUTPUT of `node-34` ----------------------------------------
-
----------------------------------------- ERR OUTPUT of `node-34` ----------------------------------------
-
---------------------------------------------------------------------------------
-
-PLAY [all] *********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-[0;32mok: [node-33][0m
-
-TASK [Instalando dependencias do EFS] ******************************************
-[1;35m[WARNING]: Consider using the get_url or uri module rather than running 'wget'.[0m
-[1;35mIf you need to use command because get_url or uri is insufficient you can add[0m
-[1;35m'warn: false' to this command task or set 'command_warnings=False' in[0m
-[1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-33][0m
-
-TASK [MONTA EFS] ***************************************************************
-[1;35m[WARNING]: Consider using the mount module rather than running 'mount'.  If you[0m
-[1;35mneed to use command because mount is insufficient you can add 'warn: false' to[0m
-[1;35mthis command task or set 'command_warnings=False' in ansible.cfg to get rid of[0m
-[1;35mthis message.[0m
-[0;33mchanged: [node-33][0m
-
-PLAY RECAP *********************************************************************
-[0;33mnode-33[0m                    : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-Executing in node `node-33` the command (via SSH): `touch worker.txt`
----------------------------------------- STD OUTPUT of `node-33` ----------------------------------------
-
----------------------------------------- ERR OUTPUT of `node-33` ----------------------------------------
-
---------------------------------------------------------------------------------
-
-PLAY [all] *********************************************************************
-
-TASK [Gera ssh] ****************************************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-TASK [Pegar arquivo ssh do host] ***********************************************
-[0;33mchanged: [node-33][0m
-[0;33mchanged: [node-34][0m
-
-TASK [faz pasta pros sshs] *****************************************************
-[1;35m[WARNING]: Consider using the file module with state=directory rather than[0m[1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-33][0m
-[0;33mchanged: [node-34][0m
-
-TASK [Fazendo upload ssh keys] *************************************************
-[0;33mchanged: [node-33][0m
-[0;33mchanged: [node-34][0m
-
-TASK [Pegando script prepare_sshkeys.sh] ***************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-TASK [Remove hosts file] *******************************************************
-[0;32mok: [node-33][0m
-[0;32mok: [node-34][0m
-
-TASK [Create hosts file] *******************************************************
-[0;33mchanged: [node-33][0m
-[0;33mchanged: [node-34][0m
-
-TASK [shell] *******************************************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-TASK [Add Ansible inventory mappings to /home/ubuntu/hosts] ********************
-[0;33mchanged: [node-33][0m
-[0;33mchanged: [node-34][0m
-
-TASK [Remove ips file] *********************************************************
-[0;32mok: [node-34][0m
-[0;32mok: [node-33][0m
-
-TASK [Create ips file] *********************************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-TASK [Add Ansible inventory mappings to ~/ips.sh] ******************************
-[0;33mchanged: [node-33][0m
-[0;33mchanged: [node-34][0m
-
-TASK [Executa ips.sh] **********************************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-PLAY RECAP *********************************************************************
-[0;33mnode-33[0m                    : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-[0;33mnode-34[0m                    : [0;32mok=13  [0m [0;33mchanged=11  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-
-PLAY [all] *********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-[0;32mok: [node-33][0m
-[0;32mok: [node-34][0m
-
-TASK [Cria pasta de resultados] ************************************************
-[1;35m[WARNING]: Consider using the file module with state=directory rather than[0m
-[1;35mrunning 'mkdir'.  If you need to use command because file is insufficient you[0m
-[1;35mcan add 'warn: false' to this command task or set 'command_warnings=False' in[0m
-[1;35mansible.cfg to get rid of this message.[0m
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-TASK [Download dos datasets] ***************************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-TASK [preparando 1] ************************************************************
-[1;35m[WARNING]: Consider using the apt module rather than running 'apt-get'.  If you[0m
-[1;35mneed to use command because apt is insufficient you can add 'warn: false' to[0m
-[1;35mthis command task or set 'command_warnings=False' in ansible.cfg to get rid of[0m
-[1;35mthis message.[0m
-[0;33mchanged: [node-33][0m
-[0;33mchanged: [node-34][0m
-
-TASK [preparando 2] ************************************************************
-[0;33mchanged: [node-33][0m
-[0;33mchanged: [node-34][0m
-
-TASK [preparando 3] ************************************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-TASK [preparando 4] ************************************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-TASK [preparando 5] ************************************************************
-[0;33mchanged: [node-33][0m
-[0;33mchanged: [node-34][0m
-
-TASK [preparando 6] ************************************************************
-[0;33mchanged: [node-34][0m
-[0;33mchanged: [node-33][0m
-
-PLAY RECAP *********************************************************************
-[0;33mnode-33[0m                    : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-[0;33mnode-34[0m                    : [0;32mok=9   [0m [0;33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
-Created cluster with id `cluster-10`. The cluster have 2 node(s)
-*  Node(id=`node-34`, type=`type-processor-c`, status=`reachable`, public_ip=`35.175.103.191`, groups=`opm`, tags=`cluster_node_type=cluster-10:node-master; clusters=cluster-10`, last_update=`12-06-20 18:52:14`
-*  Node(id=`node-33`, type=`type-processor-c`, status=`reachable`, public_ip=`3.234.217.99`, groups=`opm`, tags=`cluster_node_type=cluster-10:node-worker; clusters=cluster-10`, last_update=`12-06-20 18:52:14`
-Cluster `cluster-10` was sucessfully setup.
-# Cluster criado: cluster-10
-# Master id: node-34
-# Executando Datasets
-
-PLAY [all] *********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-[0;35m[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host node-34 should use [0m
-[0;35m/usr/bin/python3, but is using /usr/bin/python for backward compatibility with [0m
-[0;35mprior Ansible releases. A future Ansible release will default to using the [0m
-[0;35mdiscovered platform python for this host. See https://docs.ansible.com/ansible/[0m
-[0;35m2.9/reference_appendices/interpreter_discovery.html for more information. This [0m
-[0;35mfeature will be removed in version 2.12. Deprecation warnings can be disabled [0m
-[0;35mby setting deprecation_warnings=False in ansible.cfg.[0m
-[0;32mok: [node-34][0m
-
-TASK [Executando NORNE] ********************************************************
