@@ -4,39 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-path = "/home/matheus/experimental_results (copy)/"
-
-
+path = "/home/matheus/experimental_results/"
 arquivos_encontrados = [y for x in os.walk(path) for y in glob(os.path.join(x[0], '*.txt'))]
-
-
 datasets = ["NORNE","spe9","spe10model1"]
-clusters = [
-"t2small1",
-"t2small2",
-"t2small4",
-"t2small8",
-
-"t3small1",
-"t3small2",
-"t3small4",
-"t3small8",
-
-"t3xlarge1",
-"t3xlarge2",
-"t3xlarge4",
-"t3xlarge8",
-
-"c5xlarge1",
-"c5xlarge2",
-"c5xlarge4",
-"c5xlarge8",
-
-# "c6gxlarge1",
-# "c6gxlarge2",
-# "c6gxlarge4",
-# "c6gxlarge8",
-]
 
 
 
@@ -44,7 +14,7 @@ clusters = [
 def csv_gen(testcase, cfg, infos):
     header = "test-case,cfg,date,total_time-time,total_time-main,beta,avg-PIs,n-PIs,1st-PI,2nd-PI,avg(2-6),avg(2-11)"
 
-    texto = header+"\n"
+    texto = ""
     for info in infos:
         texto += testcase+","
         texto += cfg+","
@@ -61,13 +31,14 @@ def csv_gen(testcase, cfg, infos):
         texto += "\n"
 
     f = open(path+testcase+"/"+cfg+"/result.csv","w")
-    f.write(texto)
+    f.write(header+"\n"+texto)
     f.close()
 
+    return texto
 
-def chart_gen(testcase, infos):
 
-    fig = plt.figure(figsize=(20,10))
+def chart_gen(testcase, infos, path_img):
+    fig = plt.figure(figsize=(25,10))
     for c in clusters:
 
         if len(infos[c])==0: continue
@@ -75,7 +46,6 @@ def chart_gen(testcase, infos):
         total_x = infos[c][0]["n_PIs"]
 
         data_y = []
-
         stds = []
         for i in range(total_x):
             med = 0
@@ -89,22 +59,79 @@ def chart_gen(testcase, infos):
             med /= len(infos[c])
             data_y.append(med)
 
+        data_x = np.arange(1,total_x+1)
+        plt.errorbar(data_x, data_y, yerr=stds, label=c)
+
+
+    plt.title(testcase)
+    plt.xlim(-1,len(data_x)+1)
+    plt.xlabel("# Paramount Iteration")
+    plt.grid(True, ls="-.", lw=0.5)
+    plt.ylabel("Tempo (s)")
+    plt.legend(bbox_to_anchor=(0., 1.05, 1., .102), loc='lower left',
+           ncol=8, mode="expand", borderaxespad=0.,shadow=True, fancybox=True)
+    plt.savefig(path+testcase+"/absolute_"+path_img, bbox_inches="tight")
+    plt.close()
+
+
+def chart_gen2(testcase, infos, path_img):
+
+    fig = plt.figure(figsize=(25,10))
+    dados_para_plotar = []
+    for c in clusters:
+
+        if len(infos[c])==0: continue
+
+
+        total_x = infos[c][0]["n_PIs"]
+
+        data_y = []
+        stds = []
+        for i in range(total_x):
+            med = 0
+
+            vals = []
+            for j in range(len(infos[c])):
+                med += infos[c][j]["pi_array_tempos"][i]
+                vals.append(infos[c][j]["pi_array_tempos"][i])
+
+
+            stds.append(np.std(vals))
+            med /= len(infos[c])
+            data_y.append(med)
+
 
 
         data_x = np.arange(1,total_x+1)
-        yerr = np.linspace(0,0, total_x)
 
-        plt.errorbar(data_x, data_y, yerr=stds, label=c)
+        dados_para_plotar.append({"x":data_x,"y":data_y,"lbl":c,"std":stds})
+
+
+    divisores = dados_para_plotar[0]["y"].copy()
+    for i in range(len(dados_para_plotar)):
+        for j in range(len(dados_para_plotar[i]["y"])):
+            divisores[j] = min(divisores[j], dados_para_plotar[i]["y"][j])
+
+
+
+    for i in range(len(dados_para_plotar)):
+        for j in range(len(dados_para_plotar[i]["y"])):
+            dados_para_plotar[i]["y"][j] /= divisores[j]
+        plt.errorbar(dados_para_plotar[i]["x"], dados_para_plotar[i]["y"], yerr=dados_para_plotar[i]["std"], label=dados_para_plotar[i]["lbl"])
 
 
 
 
     plt.title(testcase)
+    plt.xlim(-1,len(data_x)+1)
     plt.xlabel("# Paramount Iteration")
+    plt.ylim(0)
     plt.ylabel("Tempo (s)")
-    plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left',
+    plt.legend(bbox_to_anchor=(0., 1.05, 1., .102), loc='lower left',
            ncol=8, mode="expand", borderaxespad=0.,shadow=True, fancybox=True)
-    plt.show()
+    plt.savefig(path+testcase+"/relative_"+path_img, bbox_inches="tight")
+    plt.close()
+
 
 
 def get_dados(arquivo):
@@ -203,23 +230,112 @@ def get_dados(arquivo):
     return ret
 
 
-resultados_encontrados = {}
-for d in datasets:
-    resultados_encontrados[d] = {}
-    for c in clusters:
-        resultados_encontrados[d][c] = []
-        resultados_encontrados[d][c] = [y for x in os.walk(path+d+"/"+c+"/") for y in glob(os.path.join(x[0], '*.txt'))]
-
-        for i in range(len(resultados_encontrados[d][c])):
-            resultados_encontrados[d][c][i] = get_dados(resultados_encontrados[d][c][i])
 
 
+def faz_tudo(cluster, path_img):
 
-        csv_gen(d,c,resultados_encontrados[d][c])
-    chart_gen(d,resultados_encontrados[d])
+    resultados_encontrados = {}
+    header = "test-case,cfg,date,total_time-time,total_time-main,beta,avg-PIs,n-PIs,1st-PI,2nd-PI,avg(2-6),avg(2-11)\n"
 
-    # break
+    mega_csv_geral = ""
+    for d in datasets:
+        resultados_encontrados[d] = {}
+
+
+        csv_geral = ""
+        for c in clusters:
+            resultados_encontrados[d][c] = []
+            resultados_encontrados[d][c] = [y for x in os.walk(path+d+"/"+c+"/") for y in glob(os.path.join(x[0], '*.txt'))]
+
+            for i in range(len(resultados_encontrados[d][c])):
+                resultados_encontrados[d][c][i] = get_dados(resultados_encontrados[d][c][i])
+
+
+
+            csv_geral += csv_gen(d,c,resultados_encontrados[d][c])
+
+        mega_csv_geral += csv_geral
+        f = open(path+d+"/resultado.csv","w")
+        f.write(header+csv_geral)
+        f.close()
+        chart_gen(d,resultados_encontrados[d],path_img)
+        chart_gen2(d,resultados_encontrados[d],path_img)
+
+    f = open(path+"resultado.csv","w")
+    f.write(header+mega_csv_geral)
+    f.close()
 
 
 
 
+
+
+clusters = [
+
+"t2small1",
+"t2small2",
+"t2small4",
+"t2small8",
+
+
+]
+
+faz_tudo(clusters,"t2small.pdf")
+
+clusters = [
+
+"t3small1",
+"t3small2",
+"t3small4",
+"t3small8",
+
+]
+
+faz_tudo(clusters,"t3small.pdf")
+
+clusters = [
+
+"t3xlarge1",
+"t3xlarge2",
+"t3xlarge4",
+"t3xlarge8",
+
+]
+
+faz_tudo(clusters,"t3xlarge.pdf")
+
+clusters = [
+"c5xlarge1",
+"c5xlarge2",
+"c5xlarge4",
+"c5xlarge8",
+
+]
+
+faz_tudo(clusters,"c5xlarge.pdf")
+
+clusters = [
+
+"t2small1",
+"t2small2",
+"t2small4",
+"t2small8",
+
+"t3small1",
+"t3small2",
+"t3small4",
+"t3small8",
+
+"t3xlarge1",
+"t3xlarge2",
+"t3xlarge4",
+"t3xlarge8",
+
+"c5xlarge1",
+"c5xlarge2",
+"c5xlarge4",
+"c5xlarge8",
+
+]
+
+faz_tudo(clusters,"tudo.pdf")
