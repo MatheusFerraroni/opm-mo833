@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+  - name: Debug task....
+    debug:
+      msg: OPMprepare setup action called!

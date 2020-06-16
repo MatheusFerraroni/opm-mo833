@@ -1,0 +1,32 @@
+---
+actions:
+  setup:
+    playbook: roles/opmprepare_setup.yml
+    description: Prepara o opm
+
+
+  securitynew:
+    playbook: roles/opm_security.yml
+    description: Cria Security Group
+
+
+  placementnew:
+    playbook: roles/opm_placement.yml
+    description: Cria placement Group
+
+
+  getsubnets:
+    playbook: roles/opm_subnets.yml
+    description: getsubnets
+    vars:
+    - name: vpcid
+      description: vpc id do security group
+
+  efsnew:
+    playbook: roles/opm_efsnew.yml
+    description: Cria EFS
+    vars:
+    - name: secid
+      description: Id do security group
+    - name: vpcid
+      description: vpc id do security group

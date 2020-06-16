@@ -1,0 +1,33 @@
+
+PLAY [Security group playbook] *************************************************
+
+TASK [Create security group in ec2 us-east-1] **********************************
+[1;35m[WARNING]: Ran out of time waiting for sg-0509986bf2827717b IpPermissions.[0m[1;35mtarget_type='group', description=None)][0m
+[0;33mchanged: [localhost][0m
+
+TASK [Print creation results dictionary] ***************************************
+[0;32mok: [localhost] => {[0m
+[0;32m    "msg": "vpc=vpc-4fe0cc28"[0m
+[0;32m}[0m
+
+TASK [Print creation results dictionary] ***************************************
+[0;32mok: [localhost] => {[0m
+[0;32m    "msg": "group=sg-0509986bf2827717b"[0m
+[0;32m}[0m
+
+TASK [Print creation results dictionary] ***************************************
+[0;32mok: [localhost] => {[0m
+[0;32m    "msg": "teste"[0m
+[0;32m}[0m
+
+TASK [Print creation results dictionary] ***************************************
+[0;32mok: [localhost] => {[0m
+[0;32m    "msg": "teste2"[0m
+[0;32m}[0m
+[0;33mlocalhost[0m                  : [0;32mok=5   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY RECAP *********************************************************************
+[0;33mlocalhost[0m                  : [0;32mok=5   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+Nodes `node-201` from cluster `cluster-55` successfully perfored action `securitynew`

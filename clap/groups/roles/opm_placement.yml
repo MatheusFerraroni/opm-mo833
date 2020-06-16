@@ -1,0 +1,18 @@
+---
+
+- name: "Placement group playbook"
+  hosts: localhost 
+  gather_facts: false
+  tasks:
+  - name: "Create placement Group"
+    ec2_placement_group:
+      aws_secret_key: "{{lookup('file', '~/.clap/private/clapp_key.pem') }}"
+      aws_access_key: "{{lookup('file', '~/.clap/private/clapp_acess.pub') }}"
+      region: "us-east-1"
+      name: "opm_mo833_212142"
+      state: "present"
+    register: "resultado_da_criacao"
+    
+  - name: "Print creation results dictionary"
+    debug:
+      msg: "{{ resultado_da_criacao }}"

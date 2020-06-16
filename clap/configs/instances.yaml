@@ -1,10 +1,18 @@
+type-prepare:
+    provider: aws-config-us-east-1
+    login: login-ubuntu
+    flavor: t3.small
+    boot_disk_size: 30
+    image_id: ami-085925f297f89fce1
+
+
 type-compiler: # 0,252 USD por hora
     provider: aws-config-us-east-1
     login: login-ubuntu
     flavor: r5.2xlarge
     boot_disk_size: 30
     image_id: ami-085925f297f89fce1
-    security_group: mpi_group
+    security_group: mpi_mo833_ra212142
 
 
 type-processor-a: # 0,023 USD por hora
@@ -13,7 +21,7 @@ type-processor-a: # 0,023 USD por hora
     flavor: t2.small
     boot_disk_size: 30
     image_id: ami-085925f297f89fce1
-    security_group: mpi_group
+    security_group: mpi_mo833_ra212142
 
 
 type-processor-b: # 0,0208 USD por hora
@@ -22,7 +30,7 @@ type-processor-b: # 0,0208 USD por hora
     flavor: t3.small
     boot_disk_size: 30
     image_id: ami-085925f297f89fce1
-    security_group: mpi_group
+    security_group: mpi_mo833_ra212142
 
 
 type-processor-c: # 0,1664 USD por hora
@@ -31,7 +39,7 @@ type-processor-c: # 0,1664 USD por hora
     flavor: t3.xlarge
     boot_disk_size: 30
     image_id: ami-085925f297f89fce1
-    security_group: mpi_group
+    security_group: mpi_mo833_ra212142
 
 
 type-processor-d: # 0,17 USD por hora
@@ -40,8 +48,8 @@ type-processor-d: # 0,17 USD por hora
     flavor: c5.xlarge
     boot_disk_size: 30
     image_id: ami-085925f297f89fce1
-    security_group: mpi_group
-    placement_group: opm_cluster_placement_group
+    security_group: mpi_mo833_ra212142
+    placement_group: opm_mo833_212142
 
 
 type-processor-e: # 0,136 USD por hora
@@ -50,5 +58,5 @@ type-processor-e: # 0,136 USD por hora
     flavor: a1.xlarge
     boot_disk_size: 30
     image_id: ami-085925f297f89fce1
-    security_group: mpi_group
-    placement_group: opm_cluster_placement_group
+    security_group: mpi_mo833_ra212142
+    placement_group: opm_mo833_212142

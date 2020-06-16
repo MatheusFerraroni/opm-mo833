@@ -1,0 +1,14 @@
+---
+
+- name: "Security group playbook"
+  hosts: localhost 
+  gather_facts: false
+  vars:
+    resultado: []
+    resultado2: []
+  tasks:
+
+
+
+
+

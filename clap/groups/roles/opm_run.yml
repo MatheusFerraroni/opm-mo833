@@ -21,6 +21,7 @@
       mode: pull
       recursive: yes
 
+
   - name: Executando spe10model1
     shell: /usr/bin/time -p -o /home/ubuntu/resultados/tempos_real.txt mpirun -hostfile /home/ubuntu/hosts /home/ubuntu/efs/opm-simulators/build/bin/flow --max-pi={{maxpi}} SPE10_MODEL1.DATA | grep -e MO833 > /home/ubuntu/resultados/tempos.txt
     args:
@@ -52,8 +53,4 @@
       dest: ~/experimental_results/spe9/{{tipo}}/{{ ansible_date_time.date }} {{ ansible_date_time.time }}.txt
       mode: pull
       recursive: yes
-
-
-
-
 

@@ -1,0 +1,19 @@
+setups:
+  config-prepare:
+    groups:
+    - name: opmprepare
+    actions:
+    - type: action
+      name: compila
+      group: opmprepare
+
+
+clusters:
+  cluster-opmprepare:
+    nodes:
+      node-master:
+        type: type-prepare
+        count: 1
+        min_count: 1
+        setups: 
+        - config-prepare

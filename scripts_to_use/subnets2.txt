@@ -1,0 +1,6 @@
+[0;32m                "id": "subnet-1d56fa54",[0m
+[0;32m                "id": "subnet-3b877b16",[0m
+[0;32m                "id": "subnet-5b7b8800",[0m
+[0;32m                "id": "subnet-95ff60f0",[0m
+[0;32m                "id": "subnet-a2b7429e",[0m
+[0;32m                "id": "subnet-e207bcee",[0m

@@ -1,0 +1,63 @@
+---
+
+- name: "Security group playbook"
+  hosts: localhost 
+  gather_facts: false
+  vars:
+    resultado: []
+    resultado2: []
+  tasks:
+
+
+
+
+    - name: "Pegando subnets"
+      ec2_vpc_subnet_facts:
+        aws_secret_key: "{{lookup('file', '~/.clap/private/clapp_key.pem') }}"
+        aws_access_key: "{{lookup('file', '~/.clap/private/clapp_acess.pub') }}"
+        region: "us-east-1"
+        filters:
+          vpc-id: "{{ vpcid }}"
+      register: "resultado_da_criacao"
+
+
+
+    - name: Build a list of all the security group names.
+      set_fact:
+        resultado: "{{ resultado }} + [ '{{ item.id }}' ]"
+      with_items: "{{ resultado_da_criacao.subnets }}"
+
+
+    - name: "testando..."
+      set_fact:
+        resultado2: "{{ resultado2 }} + [ '{{ resultado[item|int] }}' ]"
+      with_sequence: start=1 end=5
+
+
+
+
+
+    - name: "Print creation results dictionary"
+      debug:
+        msg: "{{ resultado2 }}"
+
+    - name: "Create security group in ec2 us-east-1"
+      efs:
+        aws_secret_key: "{{lookup('file', '~/.clap/private/clapp_key.pem') }}"
+        aws_access_key: "{{lookup('file', '~/.clap/private/clapp_acess.pub') }}"
+        region: "us-east-1"
+        name: efs_mo833_ra212142
+        id: efs_mo833_ra212142
+        state: "present"
+        tags:
+            Name: efs_mo833_ra212142
+        targets:
+          - subnet_id: "{{ resultado2 }}"
+            security_groups: "{{ secid }}"
+      register: "resultado_da_criacao"
+
+
+
+    - name: "Print creation results dictionary"
+      debug:
+        msg: "{{ resultado_da_criacao }}"
