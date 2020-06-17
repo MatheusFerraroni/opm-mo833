@@ -31,7 +31,7 @@
     - name: "testando..."
       set_fact:
         resultado2: "{{ resultado2 }} + [ '{{ resultado[item|int] }}' ]"
-      with_sequence: start=1 end=5
+      with_sequence: start=1 end=3
 
 
 
@@ -39,7 +39,7 @@
 
     - name: "Print creation results dictionary"
       debug:
-        msg: "{{ resultado2 }}"
+        msg: "\"{{ resultado2|join('\", \"') }}\""
 
     - name: "Create security group in ec2 us-east-1"
       efs:
@@ -52,7 +52,7 @@
         tags:
             Name: efs_mo833_ra212142
         targets:
-          - subnet_id: "{{ resultado2 }}"
+          - subnet_id: "({{ \"{{ resultado2|join('\", \"') }}\" }})"
             security_groups: "{{ secid }}"
       register: "resultado_da_criacao"
 

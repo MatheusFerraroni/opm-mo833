@@ -28,10 +28,3 @@
   - name: "Print creation results dictionary"
     debug:
       msg: "group={{ resultado_da_criacao.group_id }}"
-    
-  - name: "Print creation results dictionary"
-    debug:
-      msg: "teste"
-  - name: "Print creation results dictionary"
-    debug:
-      msg: "teste2"

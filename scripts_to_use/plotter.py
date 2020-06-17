@@ -126,7 +126,7 @@ def chart_gen2(testcase, infos, path_img):
     plt.xlim(-1,len(data_x)+1)
     plt.xlabel("# Paramount Iteration")
     plt.ylim(0)
-    plt.ylabel("Tempo (s)")
+    plt.ylabel("Tempo (relativo)")
     plt.legend(bbox_to_anchor=(0., 1.05, 1., .102), loc='lower left',
            ncol=8, mode="expand", borderaxespad=0.,shadow=True, fancybox=True)
     plt.savefig(path+testcase+"/relative_"+path_img, bbox_inches="tight")
@@ -268,6 +268,53 @@ def faz_tudo(cluster, path_img):
 
 
 
+def plot_individual(cluster, path_img):
+
+    resultados_encontrados = {}
+
+
+    for d in datasets:
+        resultados_encontrados[d] = {}
+
+
+
+        for c in clusters:
+            resultados_encontrados[d][c] = []
+            resultados_encontrados[d][c] = [y for x in os.walk(path+d+"/"+c+"/") for y in glob(os.path.join(x[0], '*.txt'))]
+
+            for i in range(len(resultados_encontrados[d][c])):
+                resultados_encontrados[d][c][i] = get_dados(resultados_encontrados[d][c][i])
+
+
+
+
+
+        fig = plt.figure(figsize=(25,10))
+        
+
+
+        x = 0
+        iteration = 0
+        for a in resultados_encontrados[d][c]:
+            x = a["n_PIs"]
+            y = a["pi_array_tempos"]
+
+            x = np.arange(1,x+1)
+            plt.plot(x, y, label=str(iteration))
+            iteration += 1
+
+        plt.title(d)
+        plt.xlim(-1,len(x)+1)
+        plt.xlabel("# Paramount Iteration")
+        plt.ylim(0)
+        plt.ylabel("Tempo (s)")
+        plt.legend(bbox_to_anchor=(0., 1.05, 1., .102), loc='lower left',
+               ncol=8, mode="expand", borderaxespad=0.,shadow=True, fancybox=True)
+        plt.savefig(path+d+"/specific_"+path_img, bbox_inches="tight")
+        plt.close()
+
+
+
 
 
 clusters = [
@@ -339,3 +386,51 @@ clusters = [
 ]
 
 faz_tudo(clusters,"tudo.pdf")
+
+
+clusters = [
+
+"t2small1",
+"t2small2",
+"t2small4",
+"t2small8",
+
+]
+
+plot_individual(clusters,"t2small.pdf")
+
+
+clusters = [
+
+"t3small1",
+"t3small2",
+"t3small4",
+"t3small8",
+
+]
+
+plot_individual(clusters,"t3small.pdf")
+
+
+clusters = [
+
+"t3xlarge1",
+"t3xlarge2",
+"t3xlarge4",
+"t3xlarge8",
+
+]
+
+plot_individual(clusters,"t3xlarge.pdf")
+
+
+clusters = [
+
+"c5xlarge1",
+"c5xlarge2",
+"c5xlarge4",
+"c5xlarge8",
+
+]
+
+plot_individual(clusters,"c5xlarge.pdf")
