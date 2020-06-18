@@ -5,6 +5,15 @@ actions:
     description: Prepara o opm
 
 
+
+
+  mountefs:
+    playbook: roles/opm_mountefs.yml
+    description: Monta EFS
+    vars:
+    - name: efslocation
+      description: url to efs location
+
   run:
     playbook: roles/opm_run.yml
     description: Executa o NORNE

@@ -9,16 +9,23 @@ echo $1 | grep -E -q '^[0-9]+$' || die "Parametro 1 deve ser um valor numerico, 
 
 rm ~/experimental_results/sshs/*
 
+efsendpoint=$(cat efsoutput.txt | grep EFSADDR | cut -d'=' -f2 | cut -d'"' -f1)
+
 echo "# Criando maquinas"
 
 clapp cluster start cluster-opm-$2
 
 clusterid=$(clapp cluster list | grep id | cut -d' ' -f2)
+
 masterid=$(clapp node list | grep master | cut -d' ' -f3 | cut -d'`' -f2)
 
 echo "# Cluster criado: "$clusterid
 
 echo "# Master id: "$masterid
+
+echo "# Montando EFS"
+
+clapp cluster action $clusterid opm mountefs --extra efslocation=$efsendpoint
 
 echo "# Executando Datasets"
 
@@ -26,6 +33,6 @@ clapp cluster action $clusterid opm run --nodes $masterid --extra maxpi=$1 tipo=
 
 echo "# Desligando cluster"
 
-clapp cluster stop $clusterid
+# clapp cluster stop $clusterid
 
 echo "# Cluster desligado"

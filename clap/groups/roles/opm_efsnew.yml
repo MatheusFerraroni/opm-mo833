@@ -5,11 +5,7 @@
   gather_facts: false
   vars:
     resultado: []
-    resultado2: []
   tasks:
-
-
-
 
     - name: "Pegando subnets"
       ec2_vpc_subnet_facts:
@@ -21,7 +17,6 @@
       register: "resultado_da_criacao"
 
 
-
     - name: Build a list of all the security group names.
       set_fact:
         resultado: "{{ resultado }} + [ '{{ item.id }}' ]"
@@ -32,18 +27,12 @@
       set_fact:
         resultado: "{{ resultado }} + [ '{{ item.id }}' ]"
       with_items: "{{ resultado_da_criacao.subnets }}"
-
-
 
 
     - name: Criando targets variable
       set_fact:
          variavel_targets: "{{ lookup('template', 'nome_qualquer.j2') | from_yaml }}"
 
-
-    - name: "Print creation results dictionary"
-      debug:
-        msg: "{{ variavel_targets.targets }}"
 
     - name: "Create security group in ec2 us-east-1"
       efs:
@@ -62,4 +51,4 @@
 
     - name: "Print creation results dictionary"
       debug:
-        msg: "{{ resultado_da_criacao }}"
+        msg: "EFSADDR={{ resultado_da_criacao.efs.filesystem_address }}"

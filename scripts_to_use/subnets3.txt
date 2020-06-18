@@ -1,6 +1,0 @@
-subnet-1d56fa54
-subnet-3b877b16
-subnet-5b7b8800
-subnet-95ff60f0
-subnet-a2b7429e
-subnet-e207bcee

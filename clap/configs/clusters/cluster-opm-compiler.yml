@@ -2,10 +2,7 @@ setups:
   config-compiler:
     groups:
     - name: opm
-    actions:
-    - type: action
-      name: compila
-      group: opm
+
 
 
 clusters:
