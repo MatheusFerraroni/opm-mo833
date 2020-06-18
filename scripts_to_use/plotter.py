@@ -328,6 +328,7 @@ clusters = [
 ]
 
 faz_tudo(clusters,"t2small.pdf")
+faz_tudo(clusters,"t2small.png")
 
 clusters = [
 
@@ -339,6 +340,7 @@ clusters = [
 ]
 
 faz_tudo(clusters,"t3small.pdf")
+faz_tudo(clusters,"t3small.png")
 
 clusters = [
 
@@ -350,6 +352,7 @@ clusters = [
 ]
 
 faz_tudo(clusters,"t3xlarge.pdf")
+faz_tudo(clusters,"t3xlarge.png")
 
 clusters = [
 "c5xlarge1",
@@ -360,6 +363,7 @@ clusters = [
 ]
 
 faz_tudo(clusters,"c5xlarge.pdf")
+faz_tudo(clusters,"c5xlarge.png")
 
 clusters = [
 
@@ -386,6 +390,7 @@ clusters = [
 ]
 
 faz_tudo(clusters,"tudo.pdf")
+faz_tudo(clusters,"tudo.png")
 
 
 clusters = [
@@ -398,6 +403,7 @@ clusters = [
 ]
 
 plot_individual(clusters,"t2small.pdf")
+plot_individual(clusters,"t2small.png")
 
 
 clusters = [
@@ -410,6 +416,7 @@ clusters = [
 ]
 
 plot_individual(clusters,"t3small.pdf")
+plot_individual(clusters,"t3small.png")
 
 
 clusters = [
@@ -422,6 +429,7 @@ clusters = [
 ]
 
 plot_individual(clusters,"t3xlarge.pdf")
+plot_individual(clusters,"t3xlarge.png")
 
 
 clusters = [
@@ -434,3 +442,4 @@ clusters = [
 ]
 
 plot_individual(clusters,"c5xlarge.pdf")
+plot_individual(clusters,"c5xlarge.png")
