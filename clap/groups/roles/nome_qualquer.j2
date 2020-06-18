@@ -1,0 +1,7 @@
+#jinja2:trim_blocks: True, lstrip_blocks: True
+# Esse codigo gera um dicionário chamado targets, com uma lista de dicionários, cada um com um valor de subnet_id e security_groups, a partir da variável resultado
+targets:
+  {% for item in resultado %}
+  - subnet_id: "{{ item }}"
+    security_groups: ["{{ secid }}"]
+  {% endfor %}

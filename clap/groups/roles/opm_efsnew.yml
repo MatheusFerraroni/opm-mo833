@@ -28,18 +28,22 @@
       with_items: "{{ resultado_da_criacao.subnets }}"
 
 
-    - name: "testando..."
+    - name: Build a list of all the security group names.
       set_fact:
-        resultado2: "{{ resultado2 }} + [ '{{ resultado[item|int] }}' ]"
-      with_sequence: start=1 end=3
+        resultado: "{{ resultado }} + [ '{{ item.id }}' ]"
+      with_items: "{{ resultado_da_criacao.subnets }}"
 
 
 
+
+    - name: Criando targets variable
+      set_fact:
+         variavel_targets: "{{ lookup('template', 'nome_qualquer.j2') | from_yaml }}"
 
 
     - name: "Print creation results dictionary"
       debug:
-        msg: "\"{{ resultado2|join('\", \"') }}\""
+        msg: "{{ variavel_targets.targets }}"
 
     - name: "Create security group in ec2 us-east-1"
       efs:
@@ -51,9 +55,7 @@
         state: "present"
         tags:
             Name: efs_mo833_ra212142
-        targets:
-          - subnet_id: "({{ \"{{ resultado2|join('\", \"') }}\" }})"
-            security_groups: "{{ secid }}"
+        targets: "{{ variavel_targets.targets }}"
       register: "resultado_da_criacao"
 
 
