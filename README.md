@@ -56,25 +56,25 @@ Assim que as dependências no AWS estejam prontas é possível executar o script
 ### Executar clusters
 Uma vez que o OPM esteja compilado é possível iniciar os clusters que vão executar os datasets. Para isso vá até a pasta ~/opm-mo833/scripts_to_use, onde o script “run_cluster.sh” pode ser utilizado. A sintaxe de chamada desse script é a seguinte:
 
-	* sh ./run_cluster.sh {max-pi} {cluster}
+	 sh ./run_cluster.sh {max-pi} {cluster}
 
 Ex:
 
-	* sh ./run_cluster.sh 0 t2small1
+	 sh ./run_cluster.sh 0 t2small1
 
-	* sh ./run_cluster.sh 100 t3small2
+	 sh ./run_cluster.sh 100 t3small2
 
-	* sh ./run_cluster.sh 1000 t3xlarge4
+	 sh ./run_cluster.sh 1000 t3xlarge4
 
-	* sh ./run_cluster.sh 100000 c5xlarge8
+	 sh ./run_cluster.sh 100000 c5xlarge8
 
 A execução desse script cria as instâncias necessárias, configura elas, executa os datasets e baixa os resultados para a máquina local.
 
 ### Gerar gráficos
 Para gerar os gráficos e arquivos csv é necessário instalar duas bibliotecas no virtual env do clap:
-	* pip install numpy
+	 pip install numpy
 
-	* pip install matplotlib
+	 pip install matplotlib
 
 Uma vez que elas estejam instaladas basta ir na pasta ~/opm-mo833/scripts_to_use e executar o comando
 
