@@ -33,6 +33,6 @@ clapp cluster action $clusterid opm run --nodes $masterid --extra maxpi=$1 tipo=
 
 echo "# Desligando cluster"
 
-# clapp cluster stop $clusterid
+clapp cluster stop $clusterid
 
 echo "# Cluster desligado"
