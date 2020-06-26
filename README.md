@@ -72,12 +72,12 @@ A execução desse script cria as instâncias necessárias, configura elas, exec
 
 ### Gerar gráficos
 Para gerar os gráficos e arquivos csv é necessário instalar duas bibliotecas no virtual env do clap:
-	* ```pip install numpy```
+	* pip install numpy
 
-	* ```pip install matplotlib```
+	* pip install matplotlib
 
 Uma vez que elas estejam instaladas basta ir na pasta ~/opm-mo833/scripts_to_use e executar o comando
 
-	* ```python plotter.py```
+	* python plotter.py
 Os gráficos e arquivos vão ser gerados na pasta ~/experimental_results/*
 
