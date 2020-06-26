@@ -29,3 +29,25 @@ Aplicação: <a href="https://opm-project.org/">OPEN POROUS MEDIA (OPM)</a>.
   * Copiar as pastas ~/opm-mo833/clap/configs e ~/opm-mo833/clap/group para ~/.clap/
 4. Configure as chaves na pasta ~/.clap/private de acordo com o arquivo na url (https://git.io/JfjYw)
 ![alt text](./imgs/private.png "Chaves configuradas")
+5. Preparar dependências locais
+  * cd ~/opm-mo833/scripts_to_use
+  * Execute o script prepare_local.sh (Responsável por criar a pasta ~/experimental_results)
+6. Agora é preciso preparar as dependências no AWS e os clusters já podem ser executados
+
+### Preparar dependências no AWS
+
+Uma vez que o ambiente local esteja pronto, é preciso criar o security group, EFS e placement group que serão utilizados nos próximos passos. Além disso, é preciso executar a máquina responsável por compilar o OPM antes de começar os testes.
+
+Para preparar as dependências no AWS vá até a pasta ~/opm-mo833/scripts_to_use e execute o script “prepare_aws.sh”. Agora é possível conferir no console que os recursos foram criados. A imagem abaixo mostra o EFS disponível para ser utilizado nas subnets da região utilizada, já com o security group que foi criado selecionado.
+![alt text](./imgs/efs.png "Chaves configuradas")
+Também é possível ver que o placement group já está disponível para ser utilizado.
+![alt text](./imgs/placement.png "Chaves configuradas")
+
+
+### Apagar dependências no AWS
+Para apagar o security group, EFS e placement group que foram criados basta executar o script “cleaner.sh” na pasta ~/opm-mo833/scripts_to_use. Isso deve ser feito apenas no final de todas as execuções dos clusters desejados, já que o código que foi compilado e armazenado no EFS será perdido.
+
+### Compilar OPM
+Assim que as dependências no AWS estejam prontas é possível executar o script de compilação do OPM. Para compilar o OPM e adiciona-lo no EFS basta executar o script “compile.sh” na pasta ~/opm-mo833/scripts_to_use. Ao completar sua tarefa a máquina criada é destruída e o OPM estará no EFS.
+
+### Executar clusters
