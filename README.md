@@ -78,6 +78,6 @@ Para gerar os gráficos e arquivos csv é necessário instalar duas bibliotecas 
 
 Uma vez que elas estejam instaladas basta ir na pasta ~/opm-mo833/scripts_to_use e executar o comando
 
-	* python plotter.py
+	python plotter.py
 Os gráficos e arquivos vão ser gerados na pasta ~/experimental_results/*
 
